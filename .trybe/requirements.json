@@ -1,0 +1,189 @@
+{
+  "requirements": [
+    {
+      "identifier": "test_validar_simplereport_retorna_data_de_fabricacao_mais_antiga",
+      "description": "Será validado que é possível que a classe `SimpleReport` liste a data de fabricação mais antiga",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_simplereport_retorna_validade_mais_proxima",
+      "description": "Será validado que é possível que a classe `SimpleReport` liste a validade de fabricação mais próxima",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_simplereport_retorna_empresa_com_maior_estoque",
+      "description": "Será validado que é possível que a classe `SimpleReport` liste a empresa com maior estoque",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_simplereport_retorna_formato_correto",
+      "description": "Será validado que é possível que a classe `SimpleReport` liste o formato correto",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_completereport_retorna_data_de_fabricacao_mais_antiga",
+      "description": "Será validado que é possível que a classe `CompleteReport` liste a data de fabricação mais antiga",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_completereport_retorna_validade_mais_proxima",
+      "description": "Será validado que é possível que a classe `CompleteReport` liste a validade de fabricação mais próxima",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_completereport_retorna_empresa_com_maior_estoque",
+      "description": "Será validado que é possível que a classe `CompleteReport` liste a empresa com maior estoque",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_completereport_retorna_quantidade_de_estoque_correto",
+      "description": "Será validado que é possível que a classe `CompleteReport` liste a quantidade de estoque correto",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_completereport_retorna_formato_correto",
+      "description": "Será validado que é possível que a classe `CompleteReport` liste o formato correto",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_importerdata_importar_um_arquivo_csv_simples",
+      "description": "Será validado que ao importar um arquivo csv simples será retornado com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_importerdata_importar_um_arquivo_csv_completo",
+      "description": "Será validado que ao importar um arquivo csv completo será retornado com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_importerdata_importar_um_arquivo_json_simples",
+      "description": "Será validado que ao importar um arquivo json simples será retornado com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_importerdata_importar_um_arquivo_json_completo",
+      "description": "Será validado que ao importar um arquivo json completo será retornado com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_importerdata_importar_um_arquivo_xml_simples",
+      "description": "Será validado que ao importar um arquivo xml simples será retornado com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_importerdata_importar_um_arquivo_xml_completo",
+      "description": "Será validado que ao importar um arquivo xml completo será retornado com sucesso",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_classe_csvimporter_esta_herdando_importer",
+      "description": "Será validado que a casse CsvImporter está herdando a classe Importer",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_classe_jsonimporter_esta_herdando_importer",
+      "description": "Será validado que a casse JsonImporter está herdando a classe Importer",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_classe_xmlimporter_esta_herdando_importer",
+      "description": "Será validado que a casse XmlImporter está herdando a classe Importer",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_classe_csvimporter_esta_importando_para_uma_lista",
+      "description": "Será validado que a classe CsvImporter esta importando os dados para uma lista",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_classe_jsonimporter_esta_importando_para_uma_lista",
+      "description": "Será validado que a classe JsonImporter esta importando os dados para uma lista",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_classe_xmlimporter_esta_importando_para_uma_lista",
+      "description": "Será validado que a classe XmlImporter esta importando os dados para uma lista",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_extensao_invalida_do_csvimporter",
+      "description": "Será validado que ao enviar um arquivo com extensão incorreta para o CsvImporter irá gerar um erro",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_extensao_invalida_jsonimporter",
+      "description": "Será validado que ao enviar um arquivo com extensão incorreta para o JsonImporter irá gerar um erro",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_extensao_invalida_xmlimporter",
+      "description": "Será validado que ao enviar um arquivo com extensão incorreta para o XmlImporter irá gerar um erro",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_menu_enviar_um_arquivo_csv_simples",
+      "description": "Será validado se o menu importa um arquivo csv simples",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_menu_enviar_um_arquivo_csv_completo",
+      "description": "Será validado se o menu importa um arquivo csv completo",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_menu_enviar_um_arquivo_json_simples",
+      "description": "Será validado se o menu importa um arquivo json simples",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_menu_enviar_um_arquivo_json_completo",
+      "description": "Será validado se o menu importa um arquivo json completo",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_menu_enviar_um_arquivo_xml_simples",
+      "description": "Será validado se o menu importa um arquivo xml simples",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_menu_enviar_um_arquivo_xml_completo",
+      "description": "Será validado se o menu importa um arquivo xml completo",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_menu_com_menos_argumentos",
+      "description": "Será validado se passar opcões a menos no menu irá retornar um erro",
+      "bonus": true
+    },
+    {
+      "identifier": "test_validar_inter_e_instanciado_por_iterator",
+      "description": "Será validado que inter é instanciado por iterator",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_iterar_primeiro_item_com_csv",
+      "description": "Será validado que é possivel interar o primeiro item da lista usando csv",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_iterar_primeiro_item_com_json",
+      "description": "Será validado que é possivel interar o primeiro item da lista usando json",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_iterar_primeiro_item_com_xml",
+      "description": "Será validado que é possivel interar o primeiro item da lista usando xml",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_iterar_expandir_com_dois_arquivos",
+      "description": "Será validado que é possivel expandir duas listas de dados",
+      "bonus": false
+    },
+    {
+      "identifier": "test_validar_enviar_arquivo_extensao_invalida",
+      "description": "Será validado que não é possivel enviar arquivo inválido",
+      "bonus": false
+    }
+  ]
+}
