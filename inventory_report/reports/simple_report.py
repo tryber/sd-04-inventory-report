@@ -1,8 +1,3 @@
-# https://www.edureka.co/community/17742/in-list-of-dicts-find-min-value-of-a-common-dict-field
-# https://www.programiz.com/python-programming/datetime/current-datetime
-# https://stackoverflow.com/questions/15815976/group-count-list-of-dictionaries-based-on-value
-
-
 from datetime import date
 from collections import Counter
 
@@ -35,3 +30,7 @@ class SimpleReport:
 
 # map: [x["data_de_fabricacao"] for x in data]
 # filter: ...map if condição
+
+# https://www.edureka.co/community/17742/in-list-of-dicts-find-min-value-of-a-common-dict-field
+# https://www.programiz.com/python-programming/datetime/current-datetime
+# https://stackoverflow.com/questions/15815976/group-count-list-of-dictionaries-based-on-value
