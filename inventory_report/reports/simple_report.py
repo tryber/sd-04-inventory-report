@@ -1,5 +1,19 @@
 import json
+from collections import Counter
 
+with open('../data/inventory.json', 'r') as file:
+    content = file.read()
+    data = json.loads(content)
+ 
+
+company_name = []
+
+for test in data:    
+    company_name.append(test['nome_da_empresa'])
+
+print(company_name)
+company_great_than_qtd = Counter(company_name)
+print(company_great_than_qtd)
 
 class SimpleReport:
     def __init__(self, stock):
