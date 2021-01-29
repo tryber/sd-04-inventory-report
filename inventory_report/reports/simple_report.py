@@ -2,29 +2,30 @@ import datetime
 
 
 class SimpleReport:
-    def __init__(self, dict_list):
-        self.data_de_hoje = f"{datetime.date.today()}"
+    @classmethod
+    def generate(cls, dict_list):
+        today = f"{datetime.date.today()}"
 
-        self.oldest_fabricated_date = min(
+        oldest_fabricated_date = min(
             [x["data_de_fabricacao"] for x in dict_list]
         )
 
-        self.next_expired_date = min(
+        next_expired_date = min(
             [
                 x["data_de_validade"]
                 for x in dict_list
-                if x["data_de_validade"] > self.data_de_hoje
+                if x["data_de_validade"] > today
             ]
         )
-        self.most_stocked_company = [x["nome_da_empresa"] for x in dict_list]
-        self.bigger_stock_company = max(
-            set(self.most_stocked_company), key=self.most_stocked_company.count
+        all_company_name_list = [x["nome_da_empresa"] for x in dict_list]
+        most_stocked_company = max(
+            set(all_company_name_list), key=all_company_name_list.count
         )
-
-    def generate(self):
+        report_ofd = "Data de fabricação mais antiga: "
+        report_ned = "Data de validade mais próxima: "
+        report_msc = "Empresa com maior quantidade de produtos estocados: "
         return (
-            f"""Data de fabricação mais antiga: {self.oldest_fabricated_date}\n
-            Data de validade mais próxima: {self.next_expired_date}\n
-            Empresa com maior quantidade de produtos estocados:
-            {self.bigger_stock_company}"""
+            f"{report_ofd}{oldest_fabricated_date}\n"
+            f"{report_ned}{next_expired_date}\n"
+            f"{report_msc}{most_stocked_company}\n"
         )
