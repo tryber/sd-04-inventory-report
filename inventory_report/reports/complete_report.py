@@ -59,6 +59,7 @@ class CompleteReport:
 
         return (
             f"{teste}"
+            "\n"
             f"{companies_and_qtys}"
         )
 
