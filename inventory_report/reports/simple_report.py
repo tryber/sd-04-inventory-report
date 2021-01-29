@@ -7,7 +7,7 @@ class SimpleReport:
         self = self
 
     def generate(data):
-        today = date.today()
+        today = date.today().isoformat()
 
         dataFabr = min(
             [simpleData["data_de_fabricacao"] for simpleData in data]
