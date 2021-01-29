@@ -11,7 +11,7 @@ class SimpleReport:
         hoje = datetime.today()
         formated_today = f"{hoje.year}-0{hoje.month}-{hoje.day}"
 
-        datas_de_fabricacao = max(
+        datas_de_fabricacao = min(
             [
                 datetime.strptime(
                     data["data_de_fabricacao"], "%Y-%m-%d"
