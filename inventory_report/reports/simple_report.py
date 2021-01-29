@@ -40,6 +40,8 @@ class SimpleReport:
         expiration = closest_expiration_date()
         company = max_company_occurrence()
 
-        return (f"Data de fabricação mais antiga: {manufacturing}\n"
-        f"Data de validade mais próxima: {expiration}\n"
-        f"Empresa com maior quantidade de produtos estocados: {company}\n")
+        return (
+            f"Data de fabricação mais antiga: {manufacturing}\n"
+            f"Data de validade mais próxima: {expiration}\n"
+            f"Empresa com maior quantidade de produtos estocados: {company}\n"
+        )
