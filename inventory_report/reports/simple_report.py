@@ -30,7 +30,9 @@ class SimpleReport:
 
         def max_company_occurrence():
             companies_list = [x["nome_da_empresa"] for x in report]
-            count_companies = {i:companies_list.count(i) for i in companies_list}
+            count_companies = {
+                i: companies_list.count(i) for i in companies_list
+            }
             max_company_value = max(count_companies, key=count_companies.get)
             return max_company_value
 
@@ -39,5 +41,5 @@ class SimpleReport:
         company = max_company_occurrence()
 
         return (f"Data de fabricação mais antiga: {manufacturing}\n"
-               f"Data de validade mais próxima: {expiration}\n"
-               f"Empresa com maior quantidade de produtos estocados: {company}\n")
+        f"Data de validade mais próxima: {expiration}\n"
+        f"Empresa com maior quantidade de produtos estocados: {company}\n")
