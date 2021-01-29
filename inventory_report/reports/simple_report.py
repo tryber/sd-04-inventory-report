@@ -1,5 +1,5 @@
-import json
 import datetime
+from collections import Counter
 
 
 class SimpleReport:
@@ -10,18 +10,22 @@ class SimpleReport:
         stock = self
 
         # compara a chave data_de_fabricacao de todos os objetos para encontrar a mais antiga
-        oldest_date = datetime.date.today()
+        manufacture_date = []
+        validation_date = []
+        company_name = []
         for product in stock:
-            productDate = datetime.date.fromisoformat(product['data_de_fabricacao'])
-            if productDate < oldest_date:
-                oldest_date = productDate
-        print("Data de fabricação mais antiga:", oldest_date)
-        return f"Data de fabricação mais antiga: {oldest_date}"
+            manufacture_date.append(product['data_de_fabricacao'])
+            validation_date.append(product['data_de_validade'])
+            company_name.append(product['nome_da_empresa'])
 
-        # compara a chave data_de_validade de todos os objetos para encontrar a mais próxima, que ainda não venceu
-        # datetime - timedelta
-        # print("Data de validade mais próxima: YYYY-MM-DD")
+        company_great_than_qtd = Counter(company_name)
+        print('manufacture_date:', min(manufacture_date))
+        print('validation_date:', validation_date)
+        print('company_great_than_qtd:', company_great_than_qtd)
+        simple_report = (
+            f"Data de fabricação mais antiga: {min(manufacture_date)}\n"
+            f"Data de validade mais próxima: {max(validation_date)}\n"
+            f"Empresa com maior quantidade de produtos estocados: {company_great_than_qtd[0]}"
+        )
 
-        # Utilizar a chave nome_da_empresa para contar a quantidade de produtos da empresa
-        # Depois comparar esses valores para ver quem tem o maior número de produtos estocados.
-        # print("Empresa com maior quantidade de produtos estocados: NOME DA EMPRESA")
+        return simple_report
