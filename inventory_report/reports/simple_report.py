@@ -6,13 +6,13 @@ class SimpleReport:
     def generate(cls, lista):
 
         return (
-            f"Data de fabricação mais antiga: {cls.get_mais_antiga(lista)}\n"
-            f"Data de validade mais próxima: {cls.get_mais_proxima(lista)}\n"
+            f"Data de fabricação mais antiga: {cls.get_antiga(lista)}\n"
+            f"Data de validade mais próxima: {cls.get_proxima(lista)}\n"
             f"Empresa com maior quantidade de produtos estocados: "
             f"{cls.get_empresa(lista)}"
         )
 
-    def get_mais_antiga(lista):
+    def get_antiga(lista):
         lista.sort(
             key=lambda item: datetime.strptime(
                 item["data_de_fabricacao"], "%Y-%m-%d"
@@ -20,7 +20,7 @@ class SimpleReport:
         )
         return lista[0]["data_de_fabricacao"]
 
-    def get_mais_proxima(lista):
+    def get_proxima(lista):
         today = datetime.today()
 
         filtered_lista = list(
