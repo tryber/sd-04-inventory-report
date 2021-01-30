@@ -26,7 +26,6 @@ class Inventory:
         if file_extension == ".csv":
             data = csv.DictReader(file)
             data = list(data)
-            print(data)
         if file_extension == ".json":
             data = json.load(file)
         if file_extension == ".xml":

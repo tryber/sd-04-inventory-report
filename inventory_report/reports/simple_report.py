@@ -9,7 +9,7 @@ class SimpleReport:
             f"Data de fabricação mais antiga: {cls.get_antiga(lista)}\n"
             f"Data de validade mais próxima: {cls.get_proxima(lista)}\n"
             f"Empresa com maior quantidade de produtos estocados: "
-            f"{cls.get_empresa(lista)}"
+            f"{cls.get_empresa(lista)}\n"
         )
 
     def get_antiga(lista):
