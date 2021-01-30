@@ -5,15 +5,14 @@ class SimpleReport:
     @classmethod
     def generate(cls, lista):
 
-        return f"""Data de fabricação mais antiga: \\
-{cls.get_fabricacao_mais_antiga(lista)}
-Data de validade mais próxima: \\
-{cls.get_validade_mais_proxima(lista)}
-Empresa com maior quantidade de produtos estocados: \\
-{cls.get_empresa_com_mais_produtos(lista)}
-        """
+        return (
+            f"Data de fabricação mais antiga: {cls.get_mais_antiga(lista)}\n"
+            f"Data de validade mais próxima: {cls.get_mais_proxima(lista)}\n"
+            f"Empresa com maior quantidade de produtos estocados: "
+            f"{cls.get_empresa(lista)}"
+        )
 
-    def get_fabricacao_mais_antiga(lista):
+    def get_mais_antiga(lista):
         lista.sort(
             key=lambda item: datetime.strptime(
                 item["data_de_fabricacao"], "%Y-%m-%d"
@@ -21,15 +20,31 @@ Empresa com maior quantidade de produtos estocados: \\
         )
         return lista[0]["data_de_fabricacao"]
 
-    def get_validade_mais_proxima(lista):
-        lista.sort(
-            key=lambda item: datetime.strptime(
-                item["data_de_validade"], "%Y-%m-%d"
+    def get_mais_proxima(lista):
+        today = datetime.today()
+
+        filtered_lista = list(
+            (
+                filter(
+                    lambda item: datetime.strptime(
+                        item["data_de_validade"], "%Y-%m-%d"
+                    )
+                    > today,
+                    lista,
+                )
             )
         )
-        return lista[0]["data_de_validade"]
 
-    def get_empresa_com_mais_produtos(lista):
+        sorted_lista = sorted(
+            filtered_lista,
+            key=lambda item: datetime.strptime(
+                item["data_de_validade"], "%Y-%m-%d"
+            ),
+        )
+
+        return sorted_lista[0]["data_de_validade"]
+
+    def get_empresa(lista):
 
         counter = {}
 
