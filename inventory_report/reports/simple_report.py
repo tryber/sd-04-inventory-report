@@ -16,6 +16,10 @@ class SimpleReport:
             get_min = min(datetimes_list)
             return get_min.strftime("%Y-%m-%d")
 
+        def count_occurrence(list):
+            count_items = {i: list.count(i) for i in list}
+            return count_items
+
         def oldest_manufacturing_date():
             fabrication_list = [x["data_de_fabricacao"] for x in report]
             return get_min_date(fabrication_list)
@@ -30,9 +34,12 @@ class SimpleReport:
 
         def max_company_occurrence():
             companies_list = [x["nome_da_empresa"] for x in report]
-            count_companies = {
-                i: companies_list.count(i) for i in companies_list
-            }
+            print("companies_list:", companies_list)
+            # count_companies = {
+            #     i: companies_list.count(i) for i in companies_list
+            # }
+            count_companies = count_occurrence(companies_list)
+            print("count_companies:", count_companies)
             max_company_value = max(count_companies, key=count_companies.get)
             return max_company_value
 
@@ -45,3 +52,25 @@ class SimpleReport:
             f"Data de validade mais próxima: {expiration}\n"
             f"Empresa com maior quantidade de produtos estocados: {company}\n"
         )
+
+
+teste = [
+    {
+        "nome_da_empresa": "Ford",
+        "data_de_fabricacao": "2020-01-13",
+        "data_de_validade": "2020-01-15",
+    },
+    {
+        "nome_da_empresa": "Fiat",
+        "data_de_fabricacao": "2001-01-13",
+        "data_de_validade": "2021-03-20",
+    },
+    {
+        "nome_da_empresa": "Ford",
+        "data_de_fabricacao": "2000-12-01",
+        "data_de_validade": "2022-01-15",
+    },
+]
+classe_teste = SimpleReport(teste)
+
+classe_teste.generate(teste)
