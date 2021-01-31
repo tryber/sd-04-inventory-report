@@ -46,7 +46,7 @@ class Inventory:
 
         if type == "simples":
             return SimpleReport.generate(final_report)
-        elif type == "completo":
+        else:
             return CompleteReport.generate(final_report)
 
 # https://www.guru99.com/manipulating-xml-with-python.html
