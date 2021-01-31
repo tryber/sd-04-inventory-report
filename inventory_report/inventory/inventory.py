@@ -1,48 +1,20 @@
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
-import csv
-import json
-import xml.etree.ElementTree as ET
+from inventory_report.importer.csv_importer import CsvImporter
+from inventory_report.importer.json_importer import JsonImporter
+from inventory_report.importer.xml_importer import XmlImporter
 
 
 class Inventory:
     @classmethod
-    def csv_reader(cls, pathname):
-        with open(pathname) as file:
-            csv_values = csv.DictReader(file, delimiter=",")
-            values = [value for value in csv_values]
-
-        return values
-
-    @classmethod
-    def json_reader(cls, pathname):
-        with open(pathname) as file:
-            json_values = json.load(file)
-
-        return json_values
-
-    @classmethod
-    def xml_reader(cls, pathname):
-        tree = ET.parse(pathname)
-        root = tree.getroot()
-        values = []
-
-        for elem in root:
-            obj = {}
-            for subelem in elem:
-                obj[subelem.tag] = subelem.text
-            values.append(obj)
-        return values
-
-    @classmethod
     def import_data(cls, pathname, type):
         final_report = []
         if pathname.endswith(".csv"):
-            final_report = cls.csv_reader(pathname)
+            final_report = CsvImporter.import_data(pathname)
         elif pathname.endswith(".json"):
-            final_report = cls.json_reader(pathname)
+            final_report = JsonImporter.import_data(pathname)
         elif pathname.endswith(".xml"):
-            final_report = cls.xml_reader(pathname)
+            final_report = XmlImporter.import_data(pathname)
 
         if type == "simples":
             return SimpleReport.generate(final_report)
