@@ -2,6 +2,7 @@ from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 import csv
 import json
+import xml.etree.ElementTree as ET
 
 
 class Inventory:
@@ -22,7 +23,16 @@ class Inventory:
 
     @classmethod
     def xml_reader(cls, pathname):
+        tree = ET.parse(pathname)
+        root = tree.getroot()
+        values = []
 
+        for elem in root:
+            obj = {}
+            for subelem in elem:
+                obj[subelem.tag] = subelem.text
+            values.append(obj)
+        return values
 
     @classmethod
     def import_data(cls, pathname, type):
@@ -31,10 +41,12 @@ class Inventory:
             final_report = cls.csv_reader(pathname)
         elif pathname.endswith(".json"):
             final_report = cls.json_reader(pathname)
-        elif pathname.endwith(".xml"):
+        elif pathname.endswith(".xml"):
             final_report = cls.xml_reader(pathname)
 
         if type == "simples":
             return SimpleReport.generate(final_report)
         elif type == "completo":
             return CompleteReport.generate(final_report)
+
+# https://www.guru99.com/manipulating-xml-with-python.html
