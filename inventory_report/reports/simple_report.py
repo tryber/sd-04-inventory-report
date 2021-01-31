@@ -35,3 +35,4 @@ class SimpleReport:
             f"Data de validade mais próxima: {closest_validity}\n"
             f"Empresa com maior quantidade de produtos estocados: {lg_stock}\n"
         )
+        
