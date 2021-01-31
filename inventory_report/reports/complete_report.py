@@ -48,17 +48,17 @@ class CompleteReport:
 
     @classmethod
     def generate(cls, data):
-        teste = SimpleReport.generate(data)
+        simple_report = SimpleReport.generate(data)
 
-        empresas = Counter([emp["nome_da_empresa"] for emp in data])
+        companies = Counter([emp["nome_da_empresa"] for emp in data])
 
         companies_and_qtys = "Produtos estocados por empresa: \n"
 
-        for empresa in empresas:
-            companies_and_qtys += f"- {empresa}: {empresas[empresa]}\n"
+        for company in companies:
+            companies_and_qtys += f"- {company}: {companies[company]}\n"
 
         return (
-            f"{teste}"
+            f"{simple_report}"
             "\n"
             f"{companies_and_qtys}"
         )
