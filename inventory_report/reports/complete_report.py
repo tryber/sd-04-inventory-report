@@ -12,6 +12,5 @@ class CompleteReport(SimpleReport):
 
         company_list = "Produtos estocados por empresa: \n"
         for key in count_company_occurrence.keys():
-            company_list += f"- {key}: {count_company_occurrence[key]}"
-
+            company_list += f"- {key}: {count_company_occurrence[key]}\n"
         return f"{simple_report}" "\n" f"{company_list}"
