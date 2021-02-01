@@ -31,4 +31,4 @@ class Inventory:
             print("arquivo manipulado e fechado com sucesso")
             file_opened.close()
         # return classes[report_type].generate(file_output)
-        # finally:
+        # finally
