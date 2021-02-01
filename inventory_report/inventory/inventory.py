@@ -32,18 +32,18 @@ class Inventory:
         return values
 
     @classmethod
-    def import_data(self, pathname, _type):
+    def import_data(self, pathname, type):
 
         if pathname.endswith(".csv"):
-            should_call = self.csv_importer(pathname)
+            should_call = self.csv_reader(pathname)
 
         elif pathname.endswith(".json"):
-            should_call = self.json_importer(pathname)
+            should_call = self.json_reader(pathname)
 
         elif pathname.endswith(".xml"):
-            should_call = self.xml_importer(pathname)
+            should_call = self.xml_reader(pathname)
 
-        if _type == "simples":
+        if type == "simples":
             return SimpleReport.generate(should_call)
         else:
             return CompleteReport.generate(should_call)
