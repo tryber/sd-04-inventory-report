@@ -22,9 +22,7 @@ class SimpleReport:
         )
 
     def generate(self):
-        return (
-            f"""Data de fabricação mais antiga: {self.oldest_fabricated_date}\n
+        return f"""Data de fabricação mais antiga: {self.oldest_fabricated_date}\n
             Data de validade mais próxima: {self.next_expired_date}\n
             Empresa com maior quantidade de produtos estocados:
             {self.bigger_stock_company}"""
-        )
