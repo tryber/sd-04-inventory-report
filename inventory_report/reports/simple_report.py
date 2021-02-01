@@ -1,55 +1,36 @@
-from datetime import datetime
+from datetime import date
 
 
 class SimpleReport:
-    def __init__(self, report):
-        self.report = report
+    def __init__(self):
+        self = self
 
     @classmethod
-    def count_company_occurrence(cls, list):
-        companies_list = [x["nome_da_empresa"] for x in list]
+    def count_company_occurrence(cls, report):
+        companies_list = [x["nome_da_empresa"] for x in report]
         count_items = {i: companies_list.count(i) for i in companies_list}
         return count_items
 
     @classmethod
     def generate(cls, report):
-
-        def get_min_date(dates_list):
-            datetimes_list = [
-                datetime.strptime(date, "%Y-%m-%d")
-                for date in dates_list
-            ]
-            get_min = min(datetimes_list)
-            return get_min.strftime("%Y-%m-%d")
-
-        def oldest_manufacturing_date():
-            fabrication_list = [x["data_de_fabricacao"] for x in report]
-            return get_min_date(fabrication_list)
-
-        def closest_expiration_date():
-            today = datetime.strftime(datetime.now(), "%Y-%m-%d")
-            expiration_date_list = [
-                x["data_de_validade"] for x in report
+        # Getting Oldest Fabrication Date
+        min_fabrication = min([x["data_de_fabricacao"] for x in report])
+        # Getting Closest Expiration Date
+        today = date.today().isoformat()
+        min_expiration_date = min(
+            [
+                x["data_de_validade"]
+                for x in report
                 if x["data_de_validade"] > today
             ]
-            return get_min_date(expiration_date_list)
-
-        def max_company_occurrence():
-            # companies_list = [x["nome_da_empresa"] for x in report]
-            # print("companies_list:", companies_list)
-            # count_companies = cls.count_occurrence(companies_list)
-            # print("count_companies:", count_companies)
-            count_companies = cls.count_company_occurrence(report)
-            max_company_value = max(count_companies, key=count_companies.get)
-            return max_company_value
-
-        manufacturing = oldest_manufacturing_date()
-        expiration = closest_expiration_date()
-        company = max_company_occurrence()
+        )
+        # Getting company with highest number of products
+        count_companies = cls.count_company_occurrence(report)
+        company = max(count_companies, key=count_companies.get)
 
         return (
-            f"Data de fabricação mais antiga: {manufacturing}\n"
-            f"Data de validade mais próxima: {expiration}\n"
+            f"Data de fabricação mais antiga: {min_fabrication}\n"
+            f"Data de validade mais próxima: {min_expiration_date}\n"
             f"Empresa com maior quantidade de produtos estocados: {company}\n"
         )
 
@@ -71,6 +52,6 @@ teste = [
         "data_de_validade": "2022-01-15",
     },
 ]
-classe_teste = SimpleReport(teste)
 
-classe_teste.generate(teste)
+
+SimpleReport.generate(teste)
