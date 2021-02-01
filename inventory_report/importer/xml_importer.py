@@ -2,4 +2,6 @@ from inventory_report.importer.importer import Importer
 
 
 class XmlImporter(Importer):
-    pass
+    def import_data(filepath):
+        if not filepath.endswith(".xml"):
+            raise ValueError("Arquivo inválido")
