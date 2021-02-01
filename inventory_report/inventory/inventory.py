@@ -27,7 +27,7 @@ class Inventory:
         for elem in xml.etree.ElementTree.parse(pathname).getroot():
             obj = {}
             for subelem in elem:
-                obj[subelem.tag] = subelem.txt
+                obj[subelem.tag] = subelem.text
             values.append(obj)
         return values
 
