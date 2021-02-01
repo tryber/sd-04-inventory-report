@@ -11,7 +11,7 @@ class XmlImporter(Importer):
                 obj = {}
                 for subelem in elem:
                     obj[subelem.tag] = subelem.text
-                    values.append(obj)
-                return values
+                values.append(obj)
+            return values
         else:
             raise ValueError("Arquivo inválido")
