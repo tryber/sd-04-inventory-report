@@ -1,47 +1,22 @@
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
-import csv
-import json
-import xml
+from inventory_report.importer.csv_importer import CsvImporter
+from inventory_report.importer.json_importer import JsonImporter
+from inventory_report.importer.xml_importer import XmlImporter
 
 
 class Inventory:
     @classmethod
-    def csv_reader(self, pathname):
-        with open(pathname) as file:
-            csv_values = csv.DictReader(file, delimiter=",")
-            values = [value for value in csv_values]
-        return values
-
-    @classmethod
-    def json_reader(self, pathname):
-        with open(pathname) as file:
-            json_values = json.load(file)
-
-        return json_values
-
-    @classmethod
-    def xml_reader(self, pathname):
-        values = []
-        newXml = xml.etree.ElementTree.parse(pathname).getroot()
-        for elem in newXml:
-            obj = {}
-            for subelem in elem:
-                obj[subelem.tag] = subelem.text
-            values.append(obj)
-        return values
-
-    @classmethod
     def import_data(self, pathname, type):
 
         if pathname.endswith(".csv"):
-            should_call = self.csv_reader(pathname)
+            should_call = CsvImporter.import_data(pathname)
 
         elif pathname.endswith(".json"):
-            should_call = self.json_reader(pathname)
+            should_call = JsonImporter.import_data(pathname)
 
         elif pathname.endswith(".xml"):
-            should_call = self.xml_reader(pathname)
+            should_call = XmlImporter.import_data(pathname)
 
         if type == "simples":
             return SimpleReport.generate(should_call)
