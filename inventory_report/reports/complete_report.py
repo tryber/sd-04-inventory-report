@@ -52,5 +52,4 @@ class CompleteReport(SimpleReport):
             subResult += f"- {name}: {company_counter[name]}\n"
         # print(subResult)
 
-        return f"""{resultFrom_simpleReport}\nProdutos estocados por empresa: 
-{subResult}"""
+        return f"""{resultFrom_simpleReport}\nProdutos estocados por empresa: \n{subResult}"""
