@@ -1,5 +1,5 @@
-import xml
 from inventory_report.importer.importer import Importer
+import xml
 
 
 class XmlImporter(Importer):
