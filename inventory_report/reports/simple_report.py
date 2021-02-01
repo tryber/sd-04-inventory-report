@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 class SimpleReport:
     def __init__(self, report):
         self.report = report
