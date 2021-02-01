@@ -24,7 +24,6 @@ class SimpleReport:
         ).date()
         company = collections.Counter(company).most_common(1)[0][0]
 
-
         return (
             f"Data de fabricação mais antiga: {oldestDate}\n"
             f"Data de validade mais próxima: {nearestDate}\n"
