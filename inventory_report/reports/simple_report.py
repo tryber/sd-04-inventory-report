@@ -3,6 +3,7 @@ from collections import Counter
 
 
 class SimpleReport:
+    @classmethod
     def __init__(self):
         self = self
 
