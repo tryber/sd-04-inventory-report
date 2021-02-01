@@ -6,6 +6,12 @@ class SimpleReport:
         self.report = report
 
     @classmethod
+    def count_company_occurrence(cls, list):
+        companies_list = [x["nome_da_empresa"] for x in list]
+        count_items = {i: companies_list.count(i) for i in companies_list}
+        return count_items
+
+    @classmethod
     def generate(cls, report):
 
         def get_min_date(dates_list):
@@ -15,10 +21,6 @@ class SimpleReport:
             ]
             get_min = min(datetimes_list)
             return get_min.strftime("%Y-%m-%d")
-
-        def count_occurrence(list):
-            count_items = {i: list.count(i) for i in list}
-            return count_items
 
         def oldest_manufacturing_date():
             fabrication_list = [x["data_de_fabricacao"] for x in report]
@@ -33,13 +35,11 @@ class SimpleReport:
             return get_min_date(expiration_date_list)
 
         def max_company_occurrence():
-            companies_list = [x["nome_da_empresa"] for x in report]
-            print("companies_list:", companies_list)
-            # count_companies = {
-            #     i: companies_list.count(i) for i in companies_list
-            # }
-            count_companies = count_occurrence(companies_list)
-            print("count_companies:", count_companies)
+            # companies_list = [x["nome_da_empresa"] for x in report]
+            # print("companies_list:", companies_list)
+            # count_companies = cls.count_occurrence(companies_list)
+            # print("count_companies:", count_companies)
+            count_companies = cls.count_company_occurrence(report)
             max_company_value = max(count_companies, key=count_companies.get)
             return max_company_value
 
