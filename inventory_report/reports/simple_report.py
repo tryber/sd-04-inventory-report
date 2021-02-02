@@ -10,10 +10,12 @@ class SimpleReport:
 
         for item in data:
             fabricationDate.append(
-                datetime.datetime.strptime(item["data_de_fabricacao"], "%Y-%m-%d")
+                datetime.datetime
+                .strptime(item["data_de_fabricacao"], "%Y-%m-%d")
             )
             validityDate.append(
-                datetime.datetime.strptime(item["data_de_validade"], "%Y-%m-%d")
+                datetime.datetime
+                .strptime(item["data_de_validade"], "%Y-%m-%d")
             )
             company.append(item["nome_da_empresa"])
 
