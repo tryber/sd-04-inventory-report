@@ -8,14 +8,14 @@ class SimpleReport:
         validityDate = []
         company = []
 
-        for x in data:
+        for item in data:
             fabricationDate.append(
-                datetime.datetime.strptime(x["data_de_fabricacao"], "%Y-%m-%d")
+                datetime.datetime.strptime(item["data_de_fabricacao"], "%Y-%m-%d")
             )
             validityDate.append(
-                datetime.datetime.strptime(x["data_de_validade"], "%Y-%m-%d")
+                datetime.datetime.strptime(item["data_de_validade"], "%Y-%m-%d")
             )
-            company.append(x["nome_da_empresa"])
+            company.append(item["nome_da_empresa"])
 
         oldestDate = min(fabricationDate).date()
         nearestDate = min(

@@ -1,9 +1,10 @@
 from inventory_report.importer.importer import Importer
-from inventory_report.inventory.inventory import Inventory
-
+import json
 
 class JsonImporter(Importer):
     def import_data(path):
         if not path.endswith(".json"):
             raise ValueError("Arquivo inválido")
-        return Inventory.import_dict(path)
+        with open(path) as file:
+            data = json.load(file)
+            return data
