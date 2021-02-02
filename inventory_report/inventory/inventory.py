@@ -1,8 +1,10 @@
 from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
-import csv
-import json
-import xml
+
+from inventory_report.importer.csv_importer import CSVimporter
+from inventory_report.importer.json_importer import JSONimporter
+from inventory_report.importer.xml_importer import XMLimporter
+
 
 classes = {"simples": SimpleReport, "completo": CompleteReport}
 
@@ -10,30 +12,21 @@ classes = {"simples": SimpleReport, "completo": CompleteReport}
 class Inventory:
     @classmethod
     def import_files(self, filepath):
-        with open(filepath, encoding="utf-8") as file:
-            if filepath.endswith(".csv"):
-                data = []
-                root = csv.DictReader(file, delimiter=",")
-                for product in root:
-                    data.append(product)
-                return data
+        if filepath.endswith(".csv"):
+            return CSVimporter.import_data(filepath)
 
-            elif filepath.endswith(".json"):
-                data = json.load(file)
+        elif filepath.endswith(".json"):
+            return JSONimporter.import_data(filepath)
 
-            else:
-                data = []
-                root = xml.etree.ElementTree.parse(file).getroot()
-                for item in root:
-                    product = {}
-                    for parc in item:
-                        product[parc.tag] = parc.text
-                    data.append(product)
-                return data
-
-            return data
+        elif filepath.endswith(".xml"):
+            return XMLimporter.import_data(filepath)
+        else:
+            raise ValueError("Formato invalido")
 
     @classmethod
     def import_data(self, path, report_type):
-        data = Inventory.import_files(path)
-        return classes[report_type].generate(data)
+        data = self.import_files(path)
+        if report_type == "simples":
+            return SimpleReport.generate(data)
+        else:
+            return CompleteReport.generate(data)
