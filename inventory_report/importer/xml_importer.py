@@ -2,9 +2,11 @@ from inventory_report.importer.importer import Importer
 import xml
 
 
-class XMLimporter(Importer):
+class XmlImporter(Importer):
     @classmethod
     def import_data(self, filepath):
+        if not filepath.endswith(".xml"):
+            raise ValueError("Arquivo inválido")
         with open(filepath, encoding="utf-8") as file:
             data = []
             root = xml.etree.ElementTree.parse(file).getroot()
