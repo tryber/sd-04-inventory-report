@@ -14,5 +14,5 @@ class XmlImporter(Importer):
                 product = {}
                 for parc in item:
                     product[parc.tag] = parc.text
-                    data.append(product)
+                data.append(product)
             return data
