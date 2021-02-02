@@ -6,14 +6,14 @@ class CompleteReport(SimpleReport):
     @classmethod
     def generate(cls, dict_list):
         result = super().generate(dict_list)
-        company_count = defaultdict(lambda: 0)
+        company_total = defaultdict(lambda: 0)
 
         for report in dict_list:
-            company_count[report["nome_da_empresa"]] += 1
+            company_total[report["nome_da_empresa"]] += 1
 
         result += "\nProdutos estocados por empresa: \n"
 
-        for name in company_count:
-            result += f"- {name}: {company_count[name]}\n"
+        for company in company_total:
+            result += f"- {company}: {company_total[company]}\n"
 
         return result
