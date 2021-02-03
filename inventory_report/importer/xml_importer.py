@@ -3,6 +3,7 @@ import xml
 
 
 class XmlImporter(Importer):
+    @classmethod
     def import_data(self, filepath):
         if not filepath.endswith(".xml"):
             raise ValueError("Arquivo inválido")

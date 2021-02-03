@@ -3,6 +3,7 @@ import csv
 
 
 class CsvImporter(Importer):
+    @classmethod
     def import_data(self, filepath):
         if not filepath.endswith(".csv"):
             raise ValueError("Arquivo inválido")
