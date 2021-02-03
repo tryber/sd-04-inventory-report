@@ -27,7 +27,7 @@ class Inventory:
     def import_xml(cls, file):
         tree = xml.etree.ElementTree.parse(file)
         root = tree.getroot()
-        data = [] 
+        data = []
         for elemento in root:
             dicionario = {}
             for item in elemento:
