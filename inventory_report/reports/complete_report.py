@@ -1,8 +1,9 @@
 from .simple_report import SimpleReport
 from collections import Counter
 
+
 class CompleteReport(SimpleReport):
-  def generate(data):
+    def generate(data):
         simple_report = SimpleReport.generate(data)
 
         empresas = Counter(empresa["nome_da_empresa"] for empresa in data)
