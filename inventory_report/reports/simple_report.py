@@ -15,7 +15,7 @@ class SimpleReport:
         validity_date = []
         company_name = []
         for product in stock:
-            manufacture_date.append(int(product['data_de_fabricacao']))
+            manufacture_date.append(product['data_de_fabricacao'])
             validity_date.append(product['data_de_validade'])
             company_name.append(product['nome_da_empresa'])
 

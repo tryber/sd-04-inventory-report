@@ -1,6 +1,7 @@
 from inventory_report.importer.importer import Importer
 import csv
 
+
 class CsvImporter(Importer):
     def import_data(path_file):
         if path_file.endswith('.csv'):
