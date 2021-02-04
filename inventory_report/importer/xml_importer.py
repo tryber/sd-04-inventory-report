@@ -6,7 +6,7 @@ class XmlImporter(Importer):
     @classmethod
     def import_data(cls, pathname):
         if not pathname.endswith(".xml"):
-            raise ValueError("Formato invalido")
+            raise ValueError("Arquivo inválido")
         with open(pathname) as file:
             tree = ET.parse(file)
             root = tree.getroot()
