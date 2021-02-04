@@ -2,7 +2,7 @@ from inventory_report.importer.importer import Importer
 import json
 
 
-class JSONImporter(Importer):
+class JsonImporter(Importer):
     @classmethod
     def import_data(cls, pathname):
         if not pathname.endswith(".json"):
@@ -12,4 +12,4 @@ class JSONImporter(Importer):
         return report
 
 
-# JSONImporter.import_data('inventory_report/data/inventory.json')
+# JsonImporter.import_data('inventory_report/data/inventory.json')

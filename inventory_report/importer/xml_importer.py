@@ -2,7 +2,7 @@ from inventory_report.importer.importer import Importer
 import xml.etree.ElementTree as ET
 
 
-class XMLImporter(Importer):
+class XmlImporter(Importer):
     @classmethod
     def import_data(cls, pathname):
         if not pathname.endswith(".xml"):
@@ -23,4 +23,4 @@ class XMLImporter(Importer):
         return report
 
 
-# XMLImporter.import_data('inventory_report/data/inventory.xml')
+# XmlImporter.import_data('inventory_report/data/inventory.xml')

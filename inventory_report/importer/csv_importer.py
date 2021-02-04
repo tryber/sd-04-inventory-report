@@ -2,7 +2,7 @@ from inventory_report.importer.importer import Importer
 import csv
 
 
-class CSVImporter(Importer):
+class CsvImporter(Importer):
     @classmethod
     def import_data(cls, pathname):
         # return super().import_data(pathname)
@@ -14,4 +14,4 @@ class CSVImporter(Importer):
         return report
 
 
-# CSVImporter.import_data('inventory_report/data/inventory.csv')
+# CsvImporter.import_data('inventory_report/data/inventory.csv')
