@@ -1,5 +1,5 @@
 from inventory_report.importer.importer import Importer
-import xml
+import xml.etree.ElementTree as ET
 
 
 class XmlImporter(Importer):
@@ -7,7 +7,7 @@ class XmlImporter(Importer):
     def import_data(cls, filepath):
         if not filepath.endswith(".xml"):
             raise ValueError("Arquivo inválido")
-        root = xml.etree.ElementTree.parse(filepath).getroot()
+        root = ET.parse(filepath).getroot()
         data = []
         for elem in root:
             prod = {}
