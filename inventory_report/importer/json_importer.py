@@ -10,4 +10,4 @@ class JsonImporter(Importer):
                 data_file = json.load(path_json)
                 return data_file
         else:
-            return ValueError('Arquivo inválido')
+            raise ValueError('Arquivo inválido')

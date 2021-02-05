@@ -13,4 +13,4 @@ class XmlImporter(Importer):
                 data_file = json.loads(data_json)
                 return data_file
         else:
-            return ValueError('Arquivo inválido')    
+            raise ValueError('Arquivo inválido')    
