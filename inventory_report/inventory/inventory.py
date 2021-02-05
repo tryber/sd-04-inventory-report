@@ -35,6 +35,7 @@ class CsvImporter:
             csv_file.close()
 
 
+"""
 class Inventory:
     # def __init__(self, report_result)
 
@@ -55,7 +56,28 @@ class Inventory:
             else:
                 cls.report_result = "Tipo de relatório inválido"
             file.close()
-        return cls.report_result
+        return cls.report_result """
 
 
 # Inventory.import_data("inventory_report/data/inventory.csv", "completo")
+class Inventory(CompleteReport, SimpleReport):
+
+    @classmethod
+    def import_data(cls, filepath, report_type):
+        if filepath.endswith(".json"):
+            data = JsonImporter.import_json(filepath)
+        if filepath.endswith(".csv"):
+            data = CsvImporter.import_csv(filepath)
+        if filepath.endswith(".xml"):
+            data = XmlImporter.import_xml(filepath)
+        return (
+            SimpleReport.generate(data)
+            if report_type == "simples"
+            else CompleteReport.generate(data)
+            )
+
+
+# filepath = "inventory_report/data/inventory.xml"
+# reportType = "simples"
+# didWork = Inventory.import_data(filepath, reportType)
+# print(didWork)
