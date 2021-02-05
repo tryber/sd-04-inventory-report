@@ -1,18 +1,25 @@
 import csv
 import json
 import xml.etree.ElementTree as ElementTree
+from abc import ABC, abstractmethod
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
 
-class JsonImporter:
+class Importer(ABC):
+    @abstractmethod
+    def import_data(self, pathname):
+        raise NotImplementedError
+
+
+class JsonImporter(Importer):
     def import_json(path):
         with open(path) as json_file:
             return json.load(json_file)
             json_file.close()
 
 
-class XmlImporter:
+class XmlImporter(Importer):
     def import_xml(path):
         element_tree = ElementTree.parse(path)
         root = element_tree.getroot()
@@ -27,7 +34,7 @@ class XmlImporter:
         return data
 
 
-class CsvImporter:
+class CsvImporter(Importer):
     def import_csv(filepath):
         with open(filepath) as csv_file:
             file_reader = csv.DictReader(csv_file)
