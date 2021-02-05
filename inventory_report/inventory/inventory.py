@@ -1,6 +1,38 @@
 import csv
+import json
+import xml.etree.ElementTree as ElementTree
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
+
+
+class JsonImporter:
+    def import_json(path):
+        with open(path) as json_file:
+            return json.load(json_file)
+            json_file.close()
+
+
+class XmlImporter:
+    def import_xml(path):
+        element_tree = ElementTree.parse(path)
+        root = element_tree.getroot()
+        data = []
+
+        for product in root:
+            obj = {}
+            for element in product:
+                obj[element.tag] = element.text
+                if obj not in data:
+                    data.append(obj)
+        return data
+
+
+class CsvImporter:
+    def import_csv(filepath):
+        with open(filepath) as csv_file:
+            file_reader = csv.DictReader(csv_file)
+            return list(file_reader)
+            csv_file.close()
 
 
 class Inventory:
