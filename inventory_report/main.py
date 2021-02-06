@@ -9,14 +9,14 @@ def main():
     try:
         _, filepath, report_type = sys.argv
     except ValueError:
-        print(f"Verifique os argumentos {file=sys.stderr}")
+        print("Verifique os argumentos", file=sys.stderr)
         return
     importer = ""
     if filepath.endswith(".csv"):
         importer = CsvImporter
     elif filepath.endswith(".json"):
         importer = JsonImporter
-    elif filepath.endswith(".xml"):
+    else:
         importer = XmlImporter
     instance = InventoryRefactor(importer)
     report_result = instance.import_data(filepath, report_type)
