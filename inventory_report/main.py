@@ -1,2 +1,7 @@
+import sys
+from reports.simple_report import SimpleReport
+
+
 def main():
-    pass
+    if __name__ == "__main__":
+        SimpleReport.generate()
