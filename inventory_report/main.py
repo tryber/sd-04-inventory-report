@@ -1,4 +1,3 @@
-import sys
 from reports.simple_report import SimpleReport
 
 
