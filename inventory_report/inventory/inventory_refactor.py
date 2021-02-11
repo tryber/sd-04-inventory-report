@@ -1,30 +1,59 @@
-from inventory_report.inventory.inventory_iterator import InventoryIterator
+from collections.abc import Iterable
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
-from collections.abc import Iterable
+from inventory_report.inventory.inventory_iterator import InventoryIterator
 
 
 class InventoryRefactor(Iterable):
     def __init__(self, importer):
-        self.importer = importer
         self.data = []
-
-    @staticmethod
-    def call_report(self, rep_type, output):
-        if rep_type == 'simples':
-            return(SimpleReport.generate(output))
-        elif rep_type == 'completo':
-            return(CompleteReport.generate(output))
-        else:
-            return('Opção inválida')
-
-    def import_data(self, file_path, report_type):
-        output = []
-        output = self.importer.import_data(file_path)
-        for item in output:
-            self.data.append(dict(item))
-
-        return InventoryRefactor.call_report(self, report_type, output)
+        self.importer = importer
 
     def __iter__(self):
         return InventoryIterator(self.data)
+
+    def import_data(self, path, rel_type):
+        self.data = [*self.data, *self.importer.import_data(path)]
+        if rel_type == "simples":
+            return SimpleReport.generate(self.data)
+        else:
+            return CompleteReport.generate(self.data)
+
+
+if __name__ == "__main__":
+    print(
+        InventoryRefactor.import_data(
+            "inventory_report/data/inventory.csv", "simples"
+        )
+    )
+    print(
+        InventoryRefactor.import_data(
+            "inventory_report/data/inventory.csv", "completo"
+        )
+    )
+    print(
+        InventoryRefactor.import_data(
+            "inventory_report/data/inventory.json", "simples"
+        )
+    )
+    print(
+        InventoryRefactor.import_data(
+            "inventory_report/data/inventory.json", "completo"
+        )
+    )
+    print(
+        InventoryRefactor.import_data(
+            "inventory_report/data/inventory.xml", "simples"
+        )
+    )
+    print(
+        InventoryRefactor.import_data(
+            "inventory_report/data/inventory.xml", "completo"
+        )
+    )
+
+    inventory = InventoryRefactor()
+    inventory.import_data("inventory_report/data/inventory.csv", "simples")
+    iterator = iter(inventory)
+    first_item = next(iterator)
+    print(first_item)
