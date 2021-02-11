@@ -3,9 +3,16 @@ import json
 
 
 class JsonImporter(Importer):
-    def import_data(filepath):
-        if not filepath.endswith('.json'):
-            raise ValueError('Arquivo inválido')
-        with open(filepath) as json_file:
-            output = json.load(json_file)
-        return output
+    @classmethod
+    def import_data(cls, file_name):
+        if file_name.endswith('.json'):
+            with open(file_name) as file:
+                prod_list = json.load(file)
+                return prod_list
+
+        else:
+            raise ValueError("Arquivo inválido")
+
+
+if __name__ == "__main__":
+    print(JsonImporter.import_data('inventory_report/data/inventory.json'))

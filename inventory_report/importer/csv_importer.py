@@ -3,12 +3,19 @@ import csv
 
 
 class CsvImporter(Importer):
-    def import_data(filepath):
-        if not filepath.endswith('.csv'):
-            raise ValueError('Arquivo inválido')
-        with open(filepath) as csv_file:
-            csv_dict = csv.DictReader(csv_file, delimiter=",")
-            output = []
-            for dict in csv_dict:
-                output.append(dict)
-        return output
+    @classmethod
+    def import_data(cls, file_name):
+        if file_name.endswith('.csv'):
+            prod_list = []
+            with open(file_name) as file:
+                prod_csv = csv.DictReader(file, delimiter=",", quotechar='"')
+                for elem in prod_csv:
+                    prod_list.append(elem)
+            return prod_list
+
+        else:
+            raise ValueError("Arquivo inválido")
+
+
+if __name__ == "__main__":
+    print(CsvImporter.import_data('inventory_report/data/inventory.csv'))
