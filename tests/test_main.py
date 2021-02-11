@@ -16,7 +16,7 @@ def test_validar_menu_enviar_um_arquivo_csv_simples(capsys):
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n"
     )
-    assert expect == out
+    assert expect in out
 
 
 def test_validar_menu_enviar_um_arquivo_csv_completo(capsys):
@@ -38,7 +38,7 @@ def test_validar_menu_enviar_um_arquivo_csv_completo(capsys):
                 "- Moore Medical LLC: 1\n"
                 "- REMEDYREPACK: 1\n"
     )
-    assert expect == out
+    assert expect in out
 
 
 def test_validar_menu_enviar_um_arquivo_json_simples(capsys):
@@ -53,7 +53,7 @@ def test_validar_menu_enviar_um_arquivo_json_simples(capsys):
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n"
     )
-    assert expect == out
+    assert expect in out
 
 
 def test_validar_menu_enviar_um_arquivo_json_completo(capsys):
@@ -75,7 +75,7 @@ def test_validar_menu_enviar_um_arquivo_json_completo(capsys):
                 "- Moore Medical LLC: 1\n"
                 "- REMEDYREPACK: 1\n"
     )
-    assert expect == out
+    assert expect in out
 
 
 def test_validar_menu_enviar_um_arquivo_xml_simples(capsys):
@@ -90,7 +90,7 @@ def test_validar_menu_enviar_um_arquivo_xml_simples(capsys):
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n"
     )
-    assert expect == out
+    assert expect in out
 
 
 def test_validar_menu_enviar_um_arquivo_xml_completo(capsys):
@@ -112,7 +112,7 @@ def test_validar_menu_enviar_um_arquivo_xml_completo(capsys):
                 "- Moore Medical LLC: 1\n"
                 "- REMEDYREPACK: 1\n"
     )
-    assert expect == out
+    assert expect in out
 
 
 def test_validar_menu_com_menos_argumentos(capsys):
