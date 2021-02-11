@@ -51,7 +51,7 @@ class CompleteReport(SimpleReport):
         ]
         separator = "\n"
         return f"""{previousResult}
-Produtos Estocados por empresa: \n{separator.join(company_str)}
+Produtos estocados por empresa: \n{separator.join(company_str)}
 """
 
 
