@@ -31,7 +31,7 @@ def test_validar_menu_enviar_um_arquivo_csv_completo(capsys):
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n\n"
 
-                "Produtos estocados por empresa: \n"
+                "Produtos Estocados por empresa: \n"
                 "- Target Corporation: 4\n"
                 "- Galena Biopharma: 2\n"
                 "- Cantrell Drug Company: 2\n"
@@ -68,7 +68,7 @@ def test_validar_menu_enviar_um_arquivo_json_completo(capsys):
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n\n"
 
-                "Produtos estocados por empresa: \n"
+                "Produtos Estocados por empresa: \n"
                 "- Target Corporation: 4\n"
                 "- Galena Biopharma: 2\n"
                 "- Cantrell Drug Company: 2\n"
@@ -105,7 +105,7 @@ def test_validar_menu_enviar_um_arquivo_xml_completo(capsys):
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n\n"
 
-                "Produtos estocados por empresa: \n"
+                "Produtos Estocados por empresa: \n"
                 "- Target Corporation: 4\n"
                 "- Galena Biopharma: 2\n"
                 "- Cantrell Drug Company: 2\n"
