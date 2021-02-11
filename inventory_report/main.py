@@ -1,5 +1,24 @@
+from inventory_report.importer.csv_importer import CsvImporter
+from inventory_report.importer.json_importer import JsonImporter
+from inventory_report.importer.xml_importer import XmlImporter
+from inventory_report.inventory.inventory_refactor import InventoryRefactor
+import sys
+
+
 def main():
-    pass
+    try:
+        _arg1, pathfile, mode_report = sys.argv
+    except ValueError:
+        sys.stderr.write('Verifique os argumentos\n')
+        return
 
+    if pathfile.endswith('.csv'):
+        reports = CsvImporter
+    if pathfile.endswith('.json'):
+        reports = JsonImporter
+    if pathfile.endswith('.xml'):
+        reports = XmlImporter
 
-# Iniciando o projeto Inventory Report
+    refactor = InventoryRefactor(reports)
+    result = refactor.import_data(pathfile, mode_report)
+    print(result, end="")
