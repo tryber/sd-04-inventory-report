@@ -3,18 +3,18 @@ from collections import Counter
 
 
 class SimpleReport:
-    def __init__(self, stock):
-        self.stock = stock
+    # def __init__(self, stock):
+    #     self.stock = stock
 
-    def generate(self):
-        stock = self
+    def generate(data):
+        # stock = self
 
         today = datetime.date.today()
 
         manufacture_date = []
         validity_date = []
         company_name = []
-        for product in stock:
+        for product in data:
             manufacture_date.append(product['data_de_fabricacao'])
             validity_date.append(product['data_de_validade'])
             company_name.append(product['nome_da_empresa'])

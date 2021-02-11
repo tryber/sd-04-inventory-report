@@ -1,21 +1,24 @@
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
-
 from inventory_report.importer.csv_importer import CsvImporter
 from inventory_report.importer.json_importer import JsonImporter
 from inventory_report.importer.xml_importer import XmlImporter
 
 
 class Inventory:
-    def import_data(pathfile, mode_report):
-
+    @classmethod
+    def import_data(cls, pathfile, mode_report):
+        reports = []
         if pathfile.endswith('.csv'):
             reports = CsvImporter.import_data(pathfile)
+            print('Teste', reports)
         if pathfile.endswith('.json'):
             reports = JsonImporter.import_data(pathfile)
+            print('Teste', reports)
         if pathfile.endswith('.xml'):
             reports = XmlImporter.import_data(pathfile)
-
+            print('Teste', reports)
+        
         if mode_report == 'simples':
             return SimpleReport.generate(reports)
         else:
