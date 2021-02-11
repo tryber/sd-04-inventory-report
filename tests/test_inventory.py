@@ -10,7 +10,7 @@ def test_validar_importerdata_importar_um_arquivo_csv_simples():
     )
     report = Inventory.import_data('inventory_report/data/inventory.csv',
                                    'simples')
-    assert expect in report
+    assert expect == report
 
 
 def test_validar_importerdata_importar_um_arquivo_csv_completo():
@@ -20,7 +20,7 @@ def test_validar_importerdata_importar_um_arquivo_csv_completo():
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n\n"
 
-                "Produtos Estocados por empresa: \n"
+                "Produtos estocados por empresa: \n"
                 "- Target Corporation: 4\n"
                 "- Galena Biopharma: 2\n"
                 "- Cantrell Drug Company: 2\n"
@@ -29,7 +29,7 @@ def test_validar_importerdata_importar_um_arquivo_csv_completo():
     )
     report = Inventory.import_data('inventory_report/data/inventory.csv',
                                    'completo')
-    assert report in expect
+    assert report == expect
 
 
 def test_validar_importerdata_importar_um_arquivo_json_simples():
@@ -41,7 +41,7 @@ def test_validar_importerdata_importar_um_arquivo_json_simples():
     )
     report = Inventory.import_data('inventory_report/data/inventory.json',
                                    'simples')
-    assert report in expect
+    assert report == expect
 
 
 def test_validar_importerdata_importar_um_arquivo_json_completo():
@@ -51,7 +51,7 @@ def test_validar_importerdata_importar_um_arquivo_json_completo():
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n\n"
 
-                "Produtos Estocados por empresa: \n"
+                "Produtos estocados por empresa: \n"
                 "- Target Corporation: 4\n"
                 "- Galena Biopharma: 2\n"
                 "- Cantrell Drug Company: 2\n"
@@ -60,7 +60,7 @@ def test_validar_importerdata_importar_um_arquivo_json_completo():
     )
     report = Inventory.import_data('inventory_report/data/inventory.json',
                                    'completo')
-    assert expect in report
+    assert expect == report
 
 
 def test_validar_importerdata_importar_um_arquivo_xml_simples():
@@ -72,7 +72,7 @@ def test_validar_importerdata_importar_um_arquivo_xml_simples():
     )
     report = Inventory.import_data('inventory_report/data/inventory.xml',
                                    'simples')
-    assert expect in report
+    assert expect == report
 
 
 def test_validar_importerdata_importar_um_arquivo_xml_completo():
@@ -82,7 +82,7 @@ def test_validar_importerdata_importar_um_arquivo_xml_completo():
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n\n"
 
-                "Produtos Estocados por empresa: \n"
+                "Produtos estocados por empresa: \n"
                 "- Target Corporation: 4\n"
                 "- Galena Biopharma: 2\n"
                 "- Cantrell Drug Company: 2\n"
@@ -91,4 +91,4 @@ def test_validar_importerdata_importar_um_arquivo_xml_completo():
     )
     report = Inventory.import_data('inventory_report/data/inventory.xml',
                                    'completo')
-    assert expect in report
+    assert expect == report

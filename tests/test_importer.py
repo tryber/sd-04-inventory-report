@@ -137,4 +137,4 @@ def test_validar_classe_xmlimporter_esta_importando_para_uma_lista():
 
 def test_validar_extensao_invalida_xmlimporter():
     with pytest.raises(ValueError, match="Arquivo inválido"):
-        assert JsonImporter.import_data('inventory_report/data/inventory.csv')
+        assert XmlImporter.import_data('inventory_report/data/inventory.csv')

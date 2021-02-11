@@ -1,24 +1,25 @@
-from inventory_report.importer.importer import Importer
-from xml.etree import ElementTree
+from .importer import Importer
+import os
+import xml.etree.ElementTree as ET
 
 
 class XmlImporter(Importer):
     @classmethod
-    def import_data(cls, file_name):
-        if file_name.endswith('.xml'):
-            root = ElementTree.parse(file_name).getroot()
-            records = root.findall("record")
-            records_list = []
-            for elem in records:
-                temp_dict = {}
-                for e in elem:
-                    temp_dict[e.tag] = e.text
-                records_list.append(temp_dict)
-            return records_list
-
+    def import_data(cls, path):
+        _, file_extension = os.path.splitext(path)
+        if file_extension == ".xml":
+            return cls.open_file(path, file_extension)
         else:
             raise ValueError("Arquivo inválido")
 
-
-if __name__ == "__main__":
-    print(XmlImporter.import_data('inventory_report/data/inventory.xml'))
+    @classmethod
+    def converter_xml(cls, file):
+        tree = ET.parse(file)
+        root = tree.getroot().findall("record")
+        data = []
+        for elem in root:
+            dicionario = {}
+            for item in elem:
+                dicionario[item.tag] = item.text
+            data.append(dicionario)
+        return data

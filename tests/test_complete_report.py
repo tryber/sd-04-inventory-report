@@ -66,7 +66,7 @@ def test_validar_completereport_retorna_empresa_com_maior_estoque(stock):
 def test_validar_completereport_retorna_quantidade_de_estoque_correto(stock):
     report = CompleteReport.generate(stock)
     expected = (
-        "Produtos Estocados por empresa: \n"
+        "Produtos estocados por empresa: \n"
         "- Forces of Nature: 1\n"
         "- sanofi-aventis U.S. LLC: 2\n"
         "- Newton Laboratories: 1\n"
@@ -81,9 +81,9 @@ def test_validar_completereport_retorna_formato_correto(stock):
         "Data de validade mais próxima: 2023-01-17\n"
         "Empresa com maior quantidade de produtos "
         "estocados: sanofi-aventis U.S. LLC\n\n"
-        "Produtos Estocados por empresa: \n"
+        "Produtos estocados por empresa: \n"
         "- Forces of Nature: 1\n"
         "- sanofi-aventis U.S. LLC: 2\n"
         "- Newton Laboratories: 1\n"
     )
-    assert expected in report
+    assert expected == report

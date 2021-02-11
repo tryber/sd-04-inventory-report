@@ -1,21 +1,12 @@
-from inventory_report.importer.importer import Importer
-import csv
+import os
+from .importer import Importer
 
 
 class CsvImporter(Importer):
     @classmethod
-    def import_data(cls, file_name):
-        if file_name.endswith('.csv'):
-            prod_list = []
-            with open(file_name) as file:
-                prod_csv = csv.DictReader(file, delimiter=",", quotechar='"')
-                for elem in prod_csv:
-                    prod_list.append(elem)
-            return prod_list
-
+    def import_data(cls, path):
+        _, file_extension = os.path.splitext(path)
+        if file_extension == ".csv":
+            return cls.open_file(path, file_extension)
         else:
             raise ValueError("Arquivo inválido")
-
-
-if __name__ == "__main__":
-    print(CsvImporter.import_data('inventory_report/data/inventory.csv'))

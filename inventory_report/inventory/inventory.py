@@ -1,48 +1,41 @@
-from inventory_report.reports.simple_report import SimpleReport
-from inventory_report.reports.complete_report import CompleteReport
-from xml.etree import ElementTree
-import csv
+from ..reports.complete_report import CompleteReport
+from ..reports.simple_report import SimpleReport
 import json
+import csv
+import os
+import xml.etree.ElementTree as ET
 
 
 class Inventory:
     @classmethod
-    def read_csv(cls, path):
-        prod_list = []
+    def import_data(cls, path, report_type):
+        _, file_extension = os.path.splitext(path)
         with open(path) as file:
-            prod_csv = csv.DictReader(file, delimiter=",", quotechar='"')
-            for elem in prod_csv:
-                prod_list.append(elem)
-        return prod_list
+            data = cls.load_file(cls, file_extension, file)
+            if report_type == "simples":
+                return SimpleReport.generate(data)
+            if report_type == "completo":
+                return CompleteReport.generate(data)
+
+    def load_file(cls, file_extension, file):
+        data = []
+        if file_extension == ".csv":
+            data = csv.DictReader(file)
+            data = list(data)
+        if file_extension == ".json":
+            data = json.load(file)
+        if file_extension == ".xml":
+            data = cls.converter_xml(file)
+        return data
 
     @classmethod
-    def read_json(cls, path):
-        with open(path) as file:
-            prod_list = json.load(file)
-            return prod_list
-
-    @classmethod
-    def read_xml(cls, path):
-        root = ElementTree.parse(path).getroot()
-        records = root.findall("record")
-        records_list = []
-        for elem in records:
-            temp_dict = {}
-            for e in elem:
-                temp_dict[e.tag] = e.text
-            records_list.append(temp_dict)
-        return records_list
-
-    @classmethod
-    def import_data(cls, path, rel_type):
-        prod_list = []
-        if path.endswith(".csv"):
-            prod_list = cls.read_csv(path)
-        elif path.endswith(".json"):
-            prod_list = cls.read_json(path)
-        else:
-            prod_list = cls.read_xml(path)
-        if rel_type == "simples":
-            return SimpleReport.generate(prod_list)
-        else:
-            return CompleteReport.generate(prod_list)
+    def converter_xml(cls, file):
+        tree = ET.parse(file)
+        root = tree.getroot().findall("record")
+        data = []
+        for elem in root:
+            dicionario = {}
+            for item in elem:
+                dicionario[item.tag] = item.text
+            data.append(dicionario)
+        return data
