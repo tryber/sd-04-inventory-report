@@ -18,7 +18,6 @@ class Inventory:
         if pathfile.endswith('.xml'):
             reports = XmlImporter.import_data(pathfile)
             print('Teste', reports)
-        
         if mode_report == 'simples':
             return SimpleReport.generate(reports)
         else:
