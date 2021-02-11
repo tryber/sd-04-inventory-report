@@ -6,21 +6,30 @@ import sys
 
 
 def main():
-    p1 = sys.argv[1]
-    p2 = sys.argv[2]
-    ftd = []
-    if p1.endswith('.csv'):
-        ftd = InventoryRefactor(CsvImporter).import_data(p1, p2)
-    elif p1.endswith('.json'):
-        ftd = InventoryRefactor(JsonImporter).import_data(p1, p2)
-    elif p1.endswith('.xml'):
-        ftd = InventoryRefactor(XmlImporter).import_data(p1, p2)
-    else len(sys.argv) != 3:
+    if len(sys.argv) != 3:
         print("Verifique os argumentos", file=sys.stderr)
         return
 
-    print(ftd)
-    return ftd
+    if sys.argv[1].endswith(".csv"):
+        result = InventoryRefactor(CsvImporter).import_data(
+            sys.argv[1], sys.argv[2]
+        )
+        print(result)
+        return result
+
+    elif sys.argv[1].endswith(".json"):
+        result = InventoryRefactor(JsonImporter).import_data(
+            sys.argv[1], sys.argv[2]
+        )
+        print(result)
+        return result
+
+    else:
+        result = InventoryRefactor(XmlImporter).import_data(
+            sys.argv[1], sys.argv[2]
+        )
+        print(result)
+        return result
 
 
 if __name__ == "__main__":
