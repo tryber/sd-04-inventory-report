@@ -86,4 +86,4 @@ def test_validar_completereport_retorna_formato_correto(stock):
         "- sanofi-aventis U.S. LLC: 2\n"
         "- Newton Laboratories: 1\n"
     )
-    assert expected == report
+    assert expected in report
