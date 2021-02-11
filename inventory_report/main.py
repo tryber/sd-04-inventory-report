@@ -15,6 +15,9 @@ def main():
         ftd = InventoryRefactor(JsonImporter).import_data(p1, p2)
     elif p1.endswith('.xml'):
         ftd = InventoryRefactor(XmlImporter).import_data(p1, p2)
+    else len(sys.argv) != 3:
+        print("Verifique os argumentos", file=sys.stderr)
+        return
 
     print(ftd)
     return ftd
