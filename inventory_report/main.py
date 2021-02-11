@@ -11,14 +11,14 @@ def main():
     except ValueError:
         sys.stderr.write('Verifique os argumentos\n')
         return
-
+    
     if pathfile.endswith('.csv'):
         reports = CsvImporter
-    if pathfile.endswith('.json'):
+    elif pathfile.endswith('.json'):
         reports = JsonImporter
-    if pathfile.endswith('.xml'):
+    else:
         reports = XmlImporter
-
+    
     refactor = InventoryRefactor(reports)
     result = refactor.import_data(pathfile, mode_report)
     print(result, end="")
