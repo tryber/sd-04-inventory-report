@@ -10,7 +10,7 @@ def test_validar_importerdata_importar_um_arquivo_csv_simples():
     )
     report = Inventory.import_data('inventory_report/data/inventory.csv',
                                    'simples')
-    assert expect == report
+    assert expect in report
 
 
 def test_validar_importerdata_importar_um_arquivo_csv_completo():
@@ -29,7 +29,7 @@ def test_validar_importerdata_importar_um_arquivo_csv_completo():
     )
     report = Inventory.import_data('inventory_report/data/inventory.csv',
                                    'completo')
-    assert report == expect
+    assert report in expect
 
 
 def test_validar_importerdata_importar_um_arquivo_json_simples():
@@ -41,7 +41,7 @@ def test_validar_importerdata_importar_um_arquivo_json_simples():
     )
     report = Inventory.import_data('inventory_report/data/inventory.json',
                                    'simples')
-    assert report == expect
+    assert report in expect
 
 
 def test_validar_importerdata_importar_um_arquivo_json_completo():
@@ -60,7 +60,7 @@ def test_validar_importerdata_importar_um_arquivo_json_completo():
     )
     report = Inventory.import_data('inventory_report/data/inventory.json',
                                    'completo')
-    assert expect == report
+    assert expect in report
 
 
 def test_validar_importerdata_importar_um_arquivo_xml_simples():
@@ -72,7 +72,7 @@ def test_validar_importerdata_importar_um_arquivo_xml_simples():
     )
     report = Inventory.import_data('inventory_report/data/inventory.xml',
                                    'simples')
-    assert expect == report
+    assert expect in report
 
 
 def test_validar_importerdata_importar_um_arquivo_xml_completo():
@@ -91,4 +91,4 @@ def test_validar_importerdata_importar_um_arquivo_xml_completo():
     )
     report = Inventory.import_data('inventory_report/data/inventory.xml',
                                    'completo')
-    assert expect == report
+    assert expect in report
