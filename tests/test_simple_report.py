@@ -71,4 +71,4 @@ def test_validar_simplereport_retorna_formato_correto(stock):
         "Empresa com maior quantidade de produtos "
         "estocados: sanofi-aventis U.S. LLC\n"
     )
-    assert expected in report
+    assert expected == report

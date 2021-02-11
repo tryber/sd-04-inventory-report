@@ -16,7 +16,7 @@ def test_validar_menu_enviar_um_arquivo_csv_simples(capsys):
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n"
     )
-    assert expect in out
+    assert expect == out
 
 
 def test_validar_menu_enviar_um_arquivo_csv_completo(capsys):
@@ -31,14 +31,14 @@ def test_validar_menu_enviar_um_arquivo_csv_completo(capsys):
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n\n"
 
-                "Produtos Estocados por empresa: \n"
+                "Produtos estocados por empresa: \n"
                 "- Target Corporation: 4\n"
                 "- Galena Biopharma: 2\n"
                 "- Cantrell Drug Company: 2\n"
                 "- Moore Medical LLC: 1\n"
                 "- REMEDYREPACK: 1\n"
     )
-    assert expect in out
+    assert expect == out
 
 
 def test_validar_menu_enviar_um_arquivo_json_simples(capsys):
@@ -53,7 +53,7 @@ def test_validar_menu_enviar_um_arquivo_json_simples(capsys):
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n"
     )
-    assert expect in out
+    assert expect == out
 
 
 def test_validar_menu_enviar_um_arquivo_json_completo(capsys):
@@ -68,14 +68,14 @@ def test_validar_menu_enviar_um_arquivo_json_completo(capsys):
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n\n"
 
-                "Produtos Estocados por empresa: \n"
+                "Produtos estocados por empresa: \n"
                 "- Target Corporation: 4\n"
                 "- Galena Biopharma: 2\n"
                 "- Cantrell Drug Company: 2\n"
                 "- Moore Medical LLC: 1\n"
                 "- REMEDYREPACK: 1\n"
     )
-    assert expect in out
+    assert expect == out
 
 
 def test_validar_menu_enviar_um_arquivo_xml_simples(capsys):
@@ -90,7 +90,7 @@ def test_validar_menu_enviar_um_arquivo_xml_simples(capsys):
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n"
     )
-    assert expect in out
+    assert expect == out
 
 
 def test_validar_menu_enviar_um_arquivo_xml_completo(capsys):
@@ -105,14 +105,14 @@ def test_validar_menu_enviar_um_arquivo_xml_completo(capsys):
                 "Empresa com maior quantidade de produtos estocados: "
                 "Target Corporation\n\n"
 
-                "Produtos Estocados por empresa: \n"
+                "Produtos estocados por empresa: \n"
                 "- Target Corporation: 4\n"
                 "- Galena Biopharma: 2\n"
                 "- Cantrell Drug Company: 2\n"
                 "- Moore Medical LLC: 1\n"
                 "- REMEDYREPACK: 1\n"
     )
-    assert expect in out
+    assert expect == out
 
 
 def test_validar_menu_com_menos_argumentos(capsys):

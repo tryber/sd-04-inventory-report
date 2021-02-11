@@ -35,6 +35,6 @@ class CompleteReport:
             f"Data de validade mais próxima: {closest_exp_date}\n" +
             f"Empresa com maior quantidade de produtos estocados:"
             f" {company_name[0]}\n\n" +
-            "Produtos Estocados por empresa: \n" +
+            "Produtos estocados por empresa: \n" +
             f"{result}"
         )
