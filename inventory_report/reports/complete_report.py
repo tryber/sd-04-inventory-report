@@ -18,4 +18,4 @@ class CompleteReport(SimpleReport):
 
         return (
             f"{simple_report}\n{complete_report}"
-        ) 
+        )
