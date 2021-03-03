@@ -12,7 +12,8 @@ class SimpleReport:
         date_time = data_e_hora_atuais.strftime("%Y/%m/%d")
         data_mais_antiga = min([x["data_de_fabricacao"] for x in lista])
         data_validade_proxima = min(
-            [x["data_de_validade"] for x in lista if x["data_de_validade"] > date_time])
+            [x["data_de_validade"] for x in lista
+                if x["data_de_validade"] > date_time])
         estoque = max(
             Counter([x["nome_da_empresa"] for x in lista])
         )
