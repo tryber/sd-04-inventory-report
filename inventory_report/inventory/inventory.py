@@ -1,39 +1,23 @@
-from inventory_report.reports.complete_report import CompleteReport
 from inventory_report.reports.simple_report import SimpleReport
-import csv
-import json
-import xml.etree.ElementTree as ET
+from inventory_report.reports.complete_report import CompleteReport
+
+from inventory_report.importer.csv_importer import CsvImporter
+from inventory_report.importer.json_importer import JsonImporter
+from inventory_report.importer.xml_importer import XmlImporter
 
 
 class Inventory:
     @classmethod
     def import_data(cls, path, tipo):
+        report = []
         if path.endswith(".csv"):
-            with open(path) as csv_file:
-                data = []
-                csv_reader = csv.DictReader(csv_file)
-                for item in csv_reader:
-                    data.append(item)
-                if(tipo == 'simples'):
-                    return SimpleReport.generate(data)
-                else:
-                    return CompleteReport.generate(data)
-        elif path.endswith(".json"):
-            with open(path, 'r') as json_file:
-                data = json.load(json_file)
-                if(tipo == 'simples'):
-                    return SimpleReport.generate(data)
-                else:
-                    return CompleteReport.generate(data)
+            report = CsvImporter.import_data(path)
+        if path.endswith(".json"):
+            report = JsonImporter.import_data(path)
+        if path.endswith(".xml"):
+            report = XmlImporter.import_data(path)
+
+        if tipo == "simples":
+            return SimpleReport.generate(report)
         else:
-            root = ET.parse(path).getroot()
-            data = []
-            for child in root:
-                obj = {}
-                for neto in child:
-                    obj[neto.tag] = neto.text
-                data.append(obj)
-            if(tipo == 'simples'):
-                return SimpleReport.generate(data)
-            else:
-                return CompleteReport.generate(data)
+            return CompleteReport.generate(report)
