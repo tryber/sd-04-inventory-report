@@ -10,14 +10,13 @@ class InventoryRefactor(Iterable):
         self.data = []
         self.importer = importer
 
-    def __inter__(self):
+    def __iter__(self):
         return InventoryItarator(self.data)
 
     def import_data(self, path, tipo):
         self.data += self.importer.import_data(path)
-        result = []
+        # return self.data
         if tipo == "simples":
-            result = SimpleReport.generate(self.data)
-        elif tipo == "completo":
-            result = CompleteReport.generate(self.data)
-        return result
+            return SimpleReport.generate(self.data)
+        else:
+            return CompleteReport.generate(self.data)

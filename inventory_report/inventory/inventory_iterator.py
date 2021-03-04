@@ -8,9 +8,9 @@ class InventoryItarator(Iterator):
 
     def __next__(self):
         try:
-            current_value = self._iterable[self._position]
+            current_value = self.data[self.position]
         except IndexError:
             raise StopIteration()
         else:
-            self._position += 1
+            self.position += 1
             return current_value
