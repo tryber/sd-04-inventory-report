@@ -6,7 +6,7 @@ class SimpleReport:
     def __init__(self, files):
         self.files = files
 
-    def generate(self, stock):
+    def generate(stock):
         hoje = datetime.today()
         formated_today = f"{hoje.year}-0{hoje.month}-{hoje.day}"
 
