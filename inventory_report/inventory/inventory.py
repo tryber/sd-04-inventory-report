@@ -15,13 +15,13 @@ class Inventory:
         if filepath.endswith('.csv'):
             with open(filepath) as file:
                 data = [csv.DictReader(file, delimiter=",")]
-                simple_report(data, tipe)
+                self.simple_complete(data, tipe)
 
         elif filepath.endswith('.json'):
             with open(filepath) as file:
                 data = file.read()
                 data_json = json.loads(data)
-                simple_report(data_json, tipe)
+                self.simple_complete(data_json, tipe)
 
         elif filepath.endswith('.xml'):
             with open(filepath) as file:
