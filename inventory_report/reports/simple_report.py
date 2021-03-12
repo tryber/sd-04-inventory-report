@@ -3,10 +3,12 @@ from statistics import mode
 
 
 class SimpleReport:
-    def __init__(self, files):
-        self.files = files
+    def __init__(self):
+        pass
+        # self.files = files
 
-    def generate(stock):
+    def generate(self, stock):
+        print(f"stock/dados {stock}")
         hoje = datetime.today()
         formated_today = f"{hoje.year}-0{hoje.month}-{hoje.day}"
 
