@@ -1,15 +1,13 @@
-import csv
-import json
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
 
-class Inventory:
-    def __init__(self):
-        pass
-        # self.simple = SimpleReport()
-        # self.complete = CompleteReport()
+from inventory_report.importer.csv_importer import CsvImporter
+from inventory_report.importer.json_importer import JsonImporter
+from inventory_report.importer.xml_importer import XmlImporter
 
+
+class Inventory:
     @classmethod
     def simple_complete(cls, stock, tipe):
         if tipe == 'simples':
@@ -20,39 +18,14 @@ class Inventory:
     @classmethod
     def import_data(cls, filepath, tipe):
         if filepath.endswith('.csv'):
-            dado = cls.__csv_importer(filepath)
+            dado = CsvImporter.import_data(filepath)
             return cls.simple_complete(dado, tipe)
         elif filepath.endswith('.json'):
-            dado = cls.__json_importer(filepath)
+            dado = JsonImporter.import_data(filepath)
             return cls.simple_complete(dado, tipe)
-
-    @staticmethod
-    def __csv_importer(caminho):
-        try:
-            result = []
-            if not caminho.endswith(".csv"):
-                raise ValueError("Formato invalido")
-            with open(caminho) as file:
-                reader = csv.DictReader(file, delimiter=',')
-                for line in reader:
-                    result.append(dict(line))
-                return result
-        except FileNotFoundError:
-            raise ValueError("Arquivo não encontrado")
-
-    @staticmethod
-    def __json_importer(caminho):
-        try:
-            if not caminho.endswith(".json"):
-                raise ValueError("Formato invalido")
-            with open(caminho) as file:
-                data = file.read()
-                data_json = json.loads(data)
-                return data_json
-        except FileNotFoundError:
-            raise ValueError("Arquivo não encontrado")
-
-
+        elif filepath.endswith('.xml'):
+            dado = XmlImporter.import_data(filepath)
+            return cls.simple_complete(dado, tipe)
 # arg1 = 'inventory_report/data/inventory.csv'
 # arg3 = 'inventory_report/data/inventory.json'
 # arg2 = 'simples'
