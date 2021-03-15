@@ -6,6 +6,7 @@ class CompleteReport(SimpleReport):
     @classmethod
     def generate(cls, stock):
         heritaged_report = super().generate(stock)
+        # heritaged_report = super(CompleteReport, self).generate(stock)
 
         companys_by_name = [data["nome_da_empresa"] for data in stock]
 

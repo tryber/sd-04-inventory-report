@@ -9,11 +9,11 @@ class Inventory:
         self.simple = SimpleReport()
         self.complete = CompleteReport()
 
-    def simple_complete(self, data, tipe):
+    def simple_complete(self, stock, tipe):
         if tipe == 'simples':
-            return self.simple.generate(data)
+            return self.simple.generate(stock)
         else:
-            return self.complete.generate(data)
+            return self.complete.generate(stock)
 
     def import_data(self, filepath, tipe):
         if filepath.endswith('.csv'):
@@ -53,11 +53,12 @@ class Inventory:
 # arg1 = 'inventory_report/data/inventory.csv'
 # arg3 = 'inventory_report/data/inventory.json'
 # arg2 = 'simples'
+# arg4 = 'completo'
 
 
-# def teste(r, b):
-    # a = Inventory()
-    # return a.import_data(r, b)
+# def teste(caminho, tipo):
+#     a = Inventory()
+#     return a.import_data(caminho, tipo)
 
 
-# print(teste(arg3, arg2))
+# print(teste(arg3, arg4))
