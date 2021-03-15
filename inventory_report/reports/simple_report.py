@@ -7,7 +7,7 @@ class SimpleReport:
         pass
         # self.files = files
 
-    def generate(stock):
+    def generate(self, stock):
         hoje = datetime.today()
         formated_today = f"{hoje.year}-0{hoje.month}-{hoje.day}"
 

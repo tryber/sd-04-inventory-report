@@ -50,14 +50,14 @@ class Inventory:
             raise ValueError("Arquivo não encontrado")
 
 
-arg1 = 'inventory_report/data/inventory.csv'
-arg3 = 'inventory_report/data/inventory.json'
-arg2 = 'simples'
+# arg1 = 'inventory_report/data/inventory.csv'
+# arg3 = 'inventory_report/data/inventory.json'
+# arg2 = 'simples'
 
 
-def teste(r, b):
-    a = Inventory()
-    return a.import_data(r, b)
+# def teste(r, b):
+    # a = Inventory()
+    # return a.import_data(r, b)
 
 
-print(teste(arg3, arg2))
+# print(teste(arg3, arg2))
