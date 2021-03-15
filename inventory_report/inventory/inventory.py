@@ -6,22 +6,25 @@ from inventory_report.reports.complete_report import CompleteReport
 
 class Inventory:
     def __init__(self):
-        self.simple = SimpleReport()
-        self.complete = CompleteReport()
+        pass
+        # self.simple = SimpleReport()
+        # self.complete = CompleteReport()
 
-    def simple_complete(self, stock, tipe):
+    @classmethod
+    def simple_complete(cls, stock, tipe):
         if tipe == 'simples':
-            return self.simple.generate(stock)
+            return SimpleReport.generate(stock)
         else:
-            return self.complete.generate(stock)
+            return CompleteReport.generate(stock)
 
-    def import_data(self, filepath, tipe):
+    @classmethod
+    def import_data(cls, filepath, tipe):
         if filepath.endswith('.csv'):
-            dado = self.__csv_importer(filepath)
-            return self.simple_complete(dado, tipe)
+            dado = cls.__csv_importer(filepath)
+            return cls.simple_complete(dado, tipe)
         elif filepath.endswith('.json'):
-            dado = self.__json_importer(filepath)
-            return self.simple_complete(dado, tipe)
+            dado = cls.__json_importer(filepath)
+            return cls.simple_complete(dado, tipe)
 
     @staticmethod
     def __csv_importer(caminho):
