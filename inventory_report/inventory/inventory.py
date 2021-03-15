@@ -30,7 +30,7 @@ class Inventory:
 # arg3 = 'inventory_report/data/inventory.json'
 # arg2 = 'simples'
 # arg4 = 'completo'
-
+# tentando dar push
 
 # def teste(caminho, tipo):
 #     a = Inventory()
