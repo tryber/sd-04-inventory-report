@@ -14,6 +14,4 @@ class CompleteReport(SimpleReport):
         for key, value in qtd_products.items():
             product_stocked += f"- {key}: {value}\n"
 
-        return (
-            f"{simple_report}\n{product_stocked}"
-        )
+        return f"{simple_report}\n{product_stocked}"
