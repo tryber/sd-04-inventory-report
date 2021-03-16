@@ -4,7 +4,8 @@ from functools import reduce
 
 
 class SimpleReport:
-    def generate(new_list):
+    @classmethod
+    def generate(cls, new_list):
         today = date.today()
         oldest = None
         ending = None

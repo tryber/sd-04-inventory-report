@@ -3,8 +3,9 @@ from collections import defaultdict
 
 
 class CompleteReport (SimpleReport):
-    def generate(data):
-        result = SimpleReport.generate(data)
+    @classmethod
+    def generate(cls, data):
+        result = super().generate(data)
         entreprise_count = defaultdict(lambda: 0)
 
         for report in data:
