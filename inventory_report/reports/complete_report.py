@@ -3,8 +3,9 @@ from collections import defaultdict
 
 
 class CompleteReport(SimpleReport):
-    def generate(dict_list):
-        result = SimpleReport.generate(dict_list)
+    @classmethod
+    def generate(cls, dict_list):
+        result = super().generate(dict_list)
         company_count = defaultdict(lambda: 0)
 
         for report in dict_list:
