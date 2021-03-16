@@ -10,7 +10,7 @@ class CompleteReport(SimpleReport):
             [index["nome_da_empresa"] for index in list_dict]
         )
         product_stocked = "Produtos estocados por empresa: \n"
-        
+
         for key, value in qtd_products.items():
             product_stocked += f"- {key}: {value}\n"
 
