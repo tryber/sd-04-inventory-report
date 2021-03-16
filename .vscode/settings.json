@@ -9,5 +9,5 @@
         "-l 79"
     ],
     "python.formatting.provider": "black",
-    "python.pythonPath": ".venv\\Scripts\\python.exe"
+    "python.pythonPath": ".venv/bin/python"
 }
