@@ -15,4 +15,3 @@ class XmlImporter(Importer):
                     item[pars.tag] = pars.text
                 data.append(item)
             return data
-            
