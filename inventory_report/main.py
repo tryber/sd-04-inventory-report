@@ -7,7 +7,7 @@ import sys
 
 def main():
     try:
-        report_type, path = sys.argv
+        zero, report_type, path = sys.argv
 
     except ValueError:
         print("Verifique os argumentos", file=sys.stderr)
