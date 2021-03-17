@@ -8,7 +8,8 @@ import sys
 
 # caminho = sys.argv
 # print("Caminho é", caminho)
-# https://www.delftstack.com/pt/howto/python/python-print-to-stderr/ - Imprimir na stderr
+# https://www.delftstack.com/pt/howto/python/python-print-to-stderr/
+# Imprimir na stderr
 
 
 def main():
@@ -24,4 +25,4 @@ def main():
         importer = CsvImporter
 
     inventory = InventoryRefactor(importer)
-    print(inventory.import_data(file_path, file_type), end='')
+    print(inventory.import_data(file_path, file_type), end="")
