@@ -15,6 +15,8 @@ class InventoryRefactor(Iterable):
             SimpleReport.generate(self.data)
             if report_type == "simples"
             else CompleteReport(self.data)
+            if report_type == "completo"
+            else None
         )
 
     def __iter__(self):
