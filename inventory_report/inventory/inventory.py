@@ -2,8 +2,7 @@ from ..reports.simple_report import SimpleReport
 from ..reports.complete_report import CompleteReport
 import csv
 import json
-# from xml import etree
-import xml.etree.ElementTree as ET
+from xml.etree import ElementTree
 
 
 class Inventory:
@@ -15,7 +14,7 @@ class Inventory:
             elif path.endswith(".csv"):
                 imported_file = [item for item in csv.DictReader(opened_file)]
             elif path.endswith(".xml"):
-                file_root = ET.parse(opened_file).getroot()
+                file_root = ElementTree.parse(opened_file).getroot()
                 imported_file = [
                     {element.tag: element.text for element in record}
                     for record in file_root
