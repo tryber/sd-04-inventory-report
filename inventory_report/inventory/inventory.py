@@ -9,11 +9,11 @@ class Inventory:
     @classmethod
     def import_file(cls, path):
         with open(path, encoding="utf-8") as opened_file:
-            if path.endswith(".json"):
+            if path.endswith("json"):
                 imported_file = json.load(opened_file)
-            elif path.endswith(".csv"):
+            elif path.endswith("csv"):
                 imported_file = [item for item in csv.DictReader(opened_file)]
-            elif path.endswith(".xml"):
+            elif path.endswith("xml"):
                 file_root = ElementTree.parse(opened_file).getroot()
                 imported_file = [
                     {element.tag: element.text for element in record}
