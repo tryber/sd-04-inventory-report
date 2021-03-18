@@ -14,7 +14,7 @@ class InventoryRefactor(Iterable):
         return (
             SimpleReport.generate(self.data)
             if report_type == "simples"
-            else CompleteReport(self.data)
+            else CompleteReport.generate(self.data)
             if report_type == "completo"
             else None
         )
