@@ -7,8 +7,7 @@ import sys
 
 def main():
     try:
-        zero, report_type, path = sys.argv
-
+        zero, path, report_type = sys.argv
     except ValueError:
         print("Verifique os argumentos", file=sys.stderr)
         return
@@ -18,7 +17,6 @@ def main():
         importer = JsonImporter
     else:
         importer = XmlImporter
-
     instance = InventoryRefactor(importer)
-    results = instance.import_data((path, report_type))
-    print(results, end="")
+    result = instance.import_data(path, report_type)
+    print(result, end="")
