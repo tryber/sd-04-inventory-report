@@ -20,12 +20,9 @@ Empresa com maior quantidade de produtos estocados: {company}
 """
 
     def get_oldest_fab_date(products_list):
-        products_list.sort(
-            key=lambda product: transform_string_to_date(
-                product["data_de_fabricacao"]
-            )
+        return min(
+            [product["data_de_fabricacao"] for product in products_list]
         )
-        return products_list[0]["data_de_fabricacao"]
 
     def get_closest_validity(products_list):
         today = datetime.today()
