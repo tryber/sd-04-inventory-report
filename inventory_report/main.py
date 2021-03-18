@@ -15,7 +15,7 @@ def main():
         importer = CsvImporter
     elif path.endswith('json'):
         importer = JsonImporter
-    elif path.endswith('xml'):
+    else:
         importer = XmlImporter
     instance = InventoryRefactor(importer)
     result = instance.import_data(path, r_type)
