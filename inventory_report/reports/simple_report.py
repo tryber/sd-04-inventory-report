@@ -53,8 +53,9 @@ class SimpleReport:
         closest_validity = get_closest_validity(dataReport)
         company = get_company_with_more_products(dataReport)
 
-        print(
-            f"""Data de fabricação mais antiga: {oldest_fab_date}\n
-Data de validade mais próxima: {closest_validity}\n
-Empresa com maior quantidade de produtos estocados: {company}\n"""
+        return(
+            f"""Data de fabricação mais antiga: {oldest_fab_date}
+Data de validade mais próxima: {closest_validity}
+Empresa com maior quantidade de produtos estocados: {company}
+"""
         )
