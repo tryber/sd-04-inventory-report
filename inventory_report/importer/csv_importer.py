@@ -7,4 +7,4 @@ class CsvImporter(Importer):
     def import_data(cls, path):
         if not path.endswith("csv"):
             raise ValueError("Arquivo inválido")
-        return Inventory.import_data(path)
+        return Inventory.import_file(path)
