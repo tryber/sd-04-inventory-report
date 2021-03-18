@@ -1,33 +1,37 @@
-import datetime
-import collections
+from datetime import date
+from collections import defaultdict
+from functools import reduce
 
 
 class SimpleReport:
-    def generate(data):
-        fabricationDate = []
-        validityDate = []
-        company = []
+    @classmethod
+    def generate(cls, dict_list):
+        today = date.today()
+        olddest_date = None
+        closest_validity = None
+        company_count = defaultdict(lambda: 0)
 
-        for item in data:
-            fabricationDate.append(
-                datetime.datetime
-                .strptime(item["data_de_fabricacao"], "%Y-%m-%d")
+        def get_date(report, key, old_value, min_date=False):
+            year, month, day = report[key].split("-")
+            date_report = date(year=int(year), month=int(month), day=int(day))
+            if min_date and date_report < today:
+                return old_value
+            if old_value is None or date_report < old_value:
+                return date_report
+            return old_value
+
+        for report in dict_list:
+            olddest_date = get_date(report, "data_de_fabricacao", olddest_date)
+
+            closest_validity = get_date(
+                report, "data_de_validade", closest_validity, True
             )
-            validityDate.append(
-                datetime.datetime
-                .strptime(item["data_de_validade"], "%Y-%m-%d")
-            )
-            company.append(item["nome_da_empresa"])
 
-        oldestDate = min(fabricationDate).date()
-        nearestDate = min(
-            validity for validity in validityDate
-            if validity > datetime.datetime.now()
-        ).date()
-        company = collections.Counter(company).most_common(1)[0][0]
+            company_count[report["nome_da_empresa"]] += 1
 
-        return (
-            f"Data de fabricação mais antiga: {oldestDate}\n"
-            f"Data de validade mais próxima: {nearestDate}\n"
-            f"Empresa com maior quantidade de produtos estocados: {company}\n"
-        )
+        company = reduce(lambda a, b: a if a > b else b, company_count)
+
+        return f"""Data de fabricação mais antiga: {olddest_date}
+Data de validade mais próxima: {closest_validity}
+Empresa com maior quantidade de produtos estocados: {company}
+"""

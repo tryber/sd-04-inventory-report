@@ -1,22 +1,28 @@
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
+import csv
+import json
+import xml.etree.ElementTree as ET
 
-from inventory_report.importer.csv_importer import CsvImporter
-from inventory_report.importer.json_importer import JsonImporter
-from inventory_report.importer.xml_importer import XmlImporter
+classes = {"simples": SimpleReport, "completo": CompleteReport}
 
 
 class Inventory:
-    def import_data(path, type):
-        report = []
-        if path.endswith(".csv"):
-            report = CsvImporter.import_data(path)
-        if path.endswith(".json"):
-            report = JsonImporter.import_data(path)
-        if path.endswith(".xml"):
-            report = XmlImporter.import_data(path)
+    def import_dict(path):
+        with open(path, encoding="utf-8") as file:
+            if path.endswith(".csv"):
+                data = [data for data in csv.DictReader(file)]
+            elif path.endswith(".json"):
+                data = json.load(file)
+            else:
+                root = ET.parse(file).getroot()
+                data = [{el.tag: el.text for el in record} for record in root]
 
-        if type == "simples":
-            return SimpleReport.generate(report)
-        else:
-            return CompleteReport.generate(report)
+            return data
+
+    def import_data(path, report_type):
+        data = Inventory.import_dict(path)
+        return classes[report_type].generate(data)
+
+
+print(Inventory.import_data("inventory_report/data/inventory.xml", "simples"))
