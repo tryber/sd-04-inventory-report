@@ -6,7 +6,6 @@ import sys
 
 
 def main():
-    pass
     try:
         zero, path, r_type = sys.argv
     except ValueError:
