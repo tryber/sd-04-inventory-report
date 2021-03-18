@@ -14,8 +14,8 @@ class Inventory:
                 imported_file = json.load(opened_file)
             elif path.endswith(".csv"):
                 imported_file = [item for item in csv.DictReader(opened_file)]
-            else:
-                file_root = ET.parse(imported_file).getroot()
+            elif path.endswith(".xml"):
+                file_root = ET.parse(opened_file).getroot()
                 imported_file = [
                     {element.tag: element.text for element in record}
                     for record in file_root
