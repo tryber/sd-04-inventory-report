@@ -2,7 +2,7 @@ from inventory_report.importer.importer import Importer
 import csv
 
 
-''' importer CSV simples ou completo'''
+''' importer CSV '''
 
 
 class CsvImporter(Importer):

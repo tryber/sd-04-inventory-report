@@ -2,7 +2,7 @@ from inventory_report.importer.importer import Importer
 import xml
 
 
-''' importer XML simples ou completo'''
+''' importer XML '''
 
 
 class XmlImporter(Importer):

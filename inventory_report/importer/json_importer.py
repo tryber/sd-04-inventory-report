@@ -2,7 +2,7 @@ from inventory_report.importer.importer import Importer
 import json
 
 
-''' importer JSON simples ou completo'''
+''' importer JSON '''
 
 
 class JsonImporter(Importer):
