@@ -4,6 +4,7 @@ from inventory_report.importer.xml_importer import XmlImporter
 from inventory_report.reports.simple_report import SimpleReport
 from inventory_report.reports.complete_report import CompleteReport
 
+
 class Inventory:
     @classmethod
     def import_data(cls, filepath, report_type):
@@ -13,7 +14,7 @@ class Inventory:
 
     @classmethod
     def import_products(cls, filepath):
-        '''Chama o metodo import_data das classes de acordo com o parametro recebido'''
+        '''Chama import_data das classes conforme parametro recebido'''
         if filepath.endswith(".csv"):
             return CsvImporter.import_data(filepath)
         elif filepath.endswith(".json"):
