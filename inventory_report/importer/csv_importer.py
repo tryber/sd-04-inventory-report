@@ -6,7 +6,7 @@ class CsvImporter(Importer):
     @classmethod
     def import_data(cls, source_path):
         if not source_path.endswith(".csv"):
-            raise ValueError("Invalid file format")
+            raise ValueError("Arquivo inválido")
 
         with open(source_path) as datasource:
             data = []
