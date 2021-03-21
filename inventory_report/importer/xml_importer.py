@@ -21,4 +21,4 @@ class XmlImporter(Importer):
 
             product_list.append(formatted_row)
 
-            return product_list
+        return product_list
