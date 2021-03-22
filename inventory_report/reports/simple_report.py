@@ -18,7 +18,10 @@ class SimpleReport:
                 ).date()
                 for data in stock
             ]
-        )  # cria a strind de data // https://www.programiz.com/python-programming/datetime/strptime
+        )
+
+        # cria a string de data
+        # // https://www.programiz.com/python-programming/datetime/strptime
 
         val_date = min(
             [
@@ -31,12 +34,13 @@ class SimpleReport:
             ]
         )
 
-        stock_data = mode([data["nome_da_empresa"] for data in stock])
+        stocked = mode([data["nome_da_empresa"] for data in stock])
+        # função mode serve para encontrar valor mais frequente
 
         brief = (
             f"Data de fabricação mais antiga: {fab_day}\n"
             f"Data de validade mais próxima: {val_date}\n"
-            f"Empresa com maior quantidade de produtos estocados: {stock_data}\n"
+            f"Empresa com maior quantidade de produtos estocados: {stocked}\n"
         )
 
         return brief
