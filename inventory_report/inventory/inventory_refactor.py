@@ -1,5 +1,5 @@
 from collections.abc import Iterable
-from inventory_report.importer.csv_importer import CsvImporter
+# from inventory_report.importer.csv_importer import CsvImporter
 from inventory_report.inventory.inventory_iterator import InventoryIterator
 from inventory_report.inventory.inventory import SimpleReport
 from inventory_report.inventory.inventory import CompleteReport
