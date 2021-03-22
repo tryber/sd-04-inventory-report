@@ -5,6 +5,7 @@ from inventory_report.importer.xml_importer import XmlImporter
 import sys
 
 
+# Menu
 def main():
     if len(sys.argv) < 3:
         print("Verifique os argumentos", file=sys.stderr)
