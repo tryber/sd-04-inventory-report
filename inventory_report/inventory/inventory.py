@@ -23,6 +23,7 @@ class Inventory:
 
     def import_data(path, report_type):
         imported_data = Inventory.import_file(path)
+        
         return (
             SimpleReport.generate(imported_data)
             if report_type == "simples"
