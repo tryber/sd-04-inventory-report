@@ -13,4 +13,4 @@ class InventoryIterator(Iterator):
             raise StopIteration()
         else:
             self.position += 1
-            return value 
+            return value
