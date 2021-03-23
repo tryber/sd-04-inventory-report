@@ -8,5 +8,6 @@
     "python.formatting.blackArgs": [
         "-l 79"
     ],
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.pythonPath": "/home/kaecio/Trybe/Projetos/sd-04-inventory-report/.venv/bin/python3"
 }
