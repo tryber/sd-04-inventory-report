@@ -3,6 +3,7 @@ import csv
 
 # criando função CsvImporter
 
+
 class CsvImporter(Importer):
     @classmethod
     def import_data(self, file_path):
