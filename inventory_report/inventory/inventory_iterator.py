@@ -14,3 +14,6 @@ class InventoryIterator(Iterator):
         else:
             self.position += 1
             return value
+
+
+'''validando'''
