@@ -24,4 +24,3 @@ class Inventory:
         elif file_path.endswith('.xml'):
             data_from_file = XmlImporter.import_data(file_path)
             return self.simp_or_comp(data_from_file, tipo)
-

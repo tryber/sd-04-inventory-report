@@ -25,4 +25,3 @@ class CompleteReport(SimpleReport):
         )
 
         return formated_result
-        
