@@ -20,5 +20,5 @@ class Inventory:
         data = cls.import_files(path)
         if report_type == "simples":
             return SimpleReport.generate(data)
-        else:
+        elif report_type == "completo":
             return CompleteReport.generate(data)
