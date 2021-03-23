@@ -7,7 +7,7 @@ import sys
 
 def main():
     try:
-        _, path, tipo = sys.argv
+        _, path, tipo = sys.argv  # argv recebe lc
     except ValueError:
         print("Verifique os argumentos", file=sys.stderr)
         return
