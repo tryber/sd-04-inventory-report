@@ -1,6 +1,7 @@
 from inventory_report.importer.importer import Importer
 import csv
 
+# criando função CsvImporter
 
 class CsvImporter(Importer):
     @classmethod
