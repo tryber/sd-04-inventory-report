@@ -1,4 +1,5 @@
 from datetime import datetime
+from collections import Counter
 
 
 class SimpleReport:
@@ -16,10 +17,8 @@ class SimpleReport:
             ]
         )
 
-        companies = [dict["nome_da_empresa"] for dict in list]
-        print(companies.count)
         company_stock = max(
-          set(companies), key=companies.count
+            Counter([index["nome_da_empresa"] for index in list])
         )
         return f"""Data de fabricação mais antiga: {old_manufact}
 Data de validade mais próxima: {closest_expiration}
