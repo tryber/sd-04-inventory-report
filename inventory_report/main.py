@@ -20,3 +20,5 @@ def main():
         importer = CsvImporter
     result_import = InventoryRefactor(importer).import_data(path, type_of_file)
     print(result_import, end="")
+
+    #finalizando o projeto
