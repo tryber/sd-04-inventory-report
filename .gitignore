@@ -109,8 +109,10 @@ celerybeat.pid
 
 # Environments
 .env
+.venv_inventory_report
 .venv
 env/
+venv_inventory_report/
 venv/
 ENV/
 env.bak/
